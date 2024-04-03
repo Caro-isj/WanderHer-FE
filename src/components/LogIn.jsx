@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react'
-import { AuthContext } from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function LogIn() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState ("")
-  const [error, setError] = useState (null)
-  const {authenticateUser} = useContext(AuthContext)
-  const nav = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const { authenticateUser } = useContext(AuthContext);
+  const nav = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -18,22 +18,18 @@ export default function LogIn() {
       .post("http://localhost:5005/auth/login", userToLogin)
       .then((response) => {
         console.log("you logged in", response.data);
-        
+
         localStorage.setItem("authToken", response.data.authToken);
-        
+
         authenticateUser().then(() => {
           nav("/home");
         });
       })
       .catch((err) => {
-        console.log(
-          "there was an error logging in",
-          err.response.data.errorMessage
-        );
-        setError(err.response.data.errorMessage);
+        console.log("there was an error logging in", err.response.data.message);
+        setError(err.response.data.message);
       });
   };
-
 
   return (
     <div>
