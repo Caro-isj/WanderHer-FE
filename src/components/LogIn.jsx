@@ -5,11 +5,11 @@ import axios from 'axios'
 
 
 export default function LogIn() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState ("")
-  const [error, setError] = useState (null)
-  const {authenticateUser} = useContext(AuthContext)
-  const nav = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const { authenticateUser } = useContext(AuthContext);
+  const nav = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -26,11 +26,10 @@ export default function LogIn() {
       })
       .then(() => nav("/dashboard"))
       .catch((err) => {
-        console.log("there was an error logging in", err);
-        //setError(err.response.data.errorMessage);
+        console.log("there was an error logging in", err.response.data.message);
+        setError(err.response.data.message);
       });
   };
-
 
   return (
     <div>

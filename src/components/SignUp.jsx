@@ -1,34 +1,30 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function SignUp() {
-    const [userName, setUserName] = useState ("")
-    const [email, setEmail] = useState ("")
-    const [password, setPassword] = useState ("")
-    const [error, setError] = useState ("")
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-    const nav = useNavigate()
+  const nav = useNavigate();
 
-   const handleSignup = (event) => {
-     event.preventDefault();
-     const userToCreate = { userName, email, password };
+  const handleSignup = (event) => {
+    event.preventDefault();
+    const userToCreate = { userName, email, password };
 
-     
-     axios
-       .post("http://localhost:5005/auth/signup", userToCreate)
-       .then((response) => {
-         console.log("you created a user", response.data);
-         nav("/login");
-       })
-       .catch((err) => {
-         console.log(
-           "there was an error signing up",
-           err.response.data.errorMessage
-         );
-         setError(err.response.data.errorMessage);
-       });
-   };
+    axios
+      .post("http://localhost:5005/auth/signup", userToCreate)
+      .then((response) => {
+        console.log("you created a user", response.data);
+        nav("/login");
+      })
+      .catch((err) => {
+        console.log("there was an error signing up", err.response.data.message);
+        setError(err.response.data.message);
+      });
+  };
 
   return (
     <div>
@@ -38,7 +34,7 @@ export default function SignUp() {
           User Name:
           <input
             type="text"
-            value={userName}
+            value={userame}
             onChange={(e) => {
               setUserName(e.target.value);
             }}

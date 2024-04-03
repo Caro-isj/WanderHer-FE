@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useState } from "react";
 
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
@@ -26,9 +27,11 @@ function App() {
         />
         <Route path="/lodging-list" element={<LodgingList />} />
         <Route path="*" element={<h1> 404 Not found</h1>} />
+        <Route path="/home" element={<Dashboard />} />
       </Routes>
     </>
   );
 }
 
+export default App;
 export default App;
