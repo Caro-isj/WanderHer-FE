@@ -11,7 +11,7 @@ const AuthWrapper = ({ children }) => {
   const authenticateUser = () => {
     const theToken = localStorage.getItem("authToken");
     if (theToken) {
-      axios
+      return axios
         .get("http://localhost:5005/auth/verify", {
           headers: {
             authorization: `Bearer ${theToken}`,

@@ -8,7 +8,7 @@ export default function IsProtected({ children }) {
     return <p>Loading....</p>;
   }
   if (!isLoggedIn) {
-    <Navigate to="/login" />;
+    return <Navigate to="/login" />;
   }
   return children;
 }
