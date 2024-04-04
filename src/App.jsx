@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useState } from "react";
-
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
@@ -9,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import IsProtected from "./components/IsProtected";
 import Dashboard from "./pages/Dashboard";
 import LodgingList from "./pages/LodgingList";
+import NavigationBar from "./components/NavigationBar";
 
 function App() {
   return (
@@ -26,12 +25,13 @@ function App() {
           }
         />
         <Route path="/lodging-list" element={<LodgingList />} />
+
         <Route path="*" element={<h1> 404 Not found</h1>} />
-        <Route path="/home" element={<Dashboard />} />
       </Routes>
+      <NavigationBar />
     </>
   );
 }
 
 export default App;
-export default App;
+
