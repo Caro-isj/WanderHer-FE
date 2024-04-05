@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useState } from "react";
-
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
@@ -33,5 +31,4 @@ function App() {
   );
 }
 
-export default App;
 export default App;
