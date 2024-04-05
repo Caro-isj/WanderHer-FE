@@ -8,6 +8,9 @@ import IsProtected from "./components/IsProtected";
 import Dashboard from "./pages/Dashboard";
 import LodgingList from "./pages/LodgingList";
 import NavigationBar from "./components/NavigationBar";
+import CreateLodging from "./pages/CreateLodging";
+import EditLodging from "./components/EditLodging";
+import LodgingDetails from "./pages/LodgingDetails";
 
 function App() {
   return (
@@ -24,8 +27,38 @@ function App() {
             </IsProtected>
           }
         />
-        <Route path="/lodging-list" element={<LodgingList />} />
-
+        <Route
+          path="/lodging-list"
+          element={
+            <IsProtected>
+              <LodgingList />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/create-lodging"
+          element={
+            <IsProtected>
+              <CreateLodging />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/edit-lodging/:lodgingId"
+          element={
+            <IsProtected>
+              <EditLodging />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/lodging/:lodgingId"
+          element={
+            <IsProtected>
+              <LodgingDetails />
+            </IsProtected>
+          }
+        />
         <Route path="*" element={<h1> 404 Not found</h1>} />
       </Routes>
       <NavigationBar />

@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/LodgingListStyle.css";
 
 export default function LodgingList() {
   const [lodging, setLodging] = useState([]);
@@ -7,12 +9,20 @@ export default function LodgingList() {
   const [filterLocation, setFilterLocation] = useState("");
   const [filterType, setFilterType] = useState("");
   const [filterAmenities, setFilterAmenities] = useState([]);
+  const [availableAmenities, setAvailableAmenities] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:5005/lodging")
       .then((response) => {
         setLodging(response.data);
+         const amenitiesSet = new Set();
+         response.data.forEach((lodging) => {
+           lodging.amenities.forEach((amenity) => {
+             amenitiesSet.add(amenity);
+           });
+         });
+         setAvailableAmenities([...amenitiesSet]);
       })
       .catch((error) => {
         console.log("Couldn't get the lodgings you were expecting", error);
@@ -45,8 +55,10 @@ export default function LodgingList() {
   return (
     <div>
       <h1>Lodging List</h1>
+      <Link to="/create-lodging">
+        <button className="button-add">Add Your Accomodation</button>
+      </Link>
       <div>
-        <h1>Lodging List</h1>
         <input
           type="text"
           placeholder="Search..."
@@ -73,39 +85,42 @@ export default function LodgingList() {
           <option value="full bedroom">Full Bedroom</option>
           <option value="bed in shared bedroom">Bed in Shared Bedroom</option>
         </select>
-        {/* still havent implemented the logic to fetch the amenities in each lodging*/}
-        <label>
-          <input
-            type="checkbox"
-            value="wifi"
-            onChange={handleAmenitiesChange}
-            checked={filterAmenities.includes("wifi")}
-          />
-          WiFi
-        </label>
+        {availableAmenities.map((amenity) => (
+          <label key={amenity}>
+            <input
+              type="checkbox"
+              value={amenity}
+              onChange={handleAmenitiesChange}
+              checked={filterAmenities.includes(amenity)}
+            />
+            {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+          </label>
+        ))}
       </div>
-      <div>
+      <div className="lodging-list-container">
         {filteredLodgings.length > 0 ? (
-          filteredLodgings.map((lodging) => (
-            <div key={lodging.id}></div>
-          ))
+          filteredLodgings.map((lodging) => <div key={lodging.id}></div>)
         ) : (
           <p>No lodgings found.</p>
         )}
       </div>
       <div>
-        {lodging.length > 0 ? (
-          lodging.map((lodging) => (
-            <div key={lodging.id}>
-              <img
-                src={lodging.images}
-                alt={lodging.title}
-                style={{ width: "100%", height: "auto" }}
-              />
-              <h2>{lodging.title}</h2>
-              <p>{lodging.description}</p>
-              <p>{lodging.location}</p>
-            </div>
+        {filteredLodgings.length > 0 ? (
+          filteredLodgings.map((lodging) => (
+            <Link key={lodging.id} to={`/lodging/${lodging.id}`}>
+              <div className="lodging-item">
+                <img
+                  src={lodging.images} // Make sure this is a valid URL
+                  alt={lodging.title}
+                  style={{ width: "100%", height: "auto" }}
+                />
+                <div className="lodging-details">
+                  <h2>{lodging.title}</h2>
+                  <p>{lodging.description}</p>
+                  <p>{lodging.location}</p>
+                </div>
+              </div>
+            </Link>
           ))
         ) : (
           <p>No lodgings found.</p>

@@ -8,13 +8,14 @@ export default function NavigationBar() {
  
   const handleLogout = () => {
     localStorage.removeItem("authToken");
+    nav("/")
   };
 
   return (
     <div className="navigation-bar">
       <button onClick={() => nav("/dashboard")}>Dashboard</button>
       <button>Profile</button>
-      <button>Accomodations</button>
+      <button onClick={() => nav("/lodging-list")}>Accomodations</button>
       <button>Activities</button>
       <button>Alert!</button>
       <button onClick={handleLogout}>Log out</button>
