@@ -12,6 +12,7 @@ export default function SignUp() {
 
   const handleSignup = (event) => {
     event.preventDefault();
+
     const userToCreate = { userName, email, password };
 
     axios
@@ -60,6 +61,7 @@ export default function SignUp() {
             }}
           />
         </label>
+
         <button>Sign Up</button>
       </form>
       {error ? <h4 className="error-message">{error}</h4> : null}

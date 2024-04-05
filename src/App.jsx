@@ -11,6 +11,8 @@ import NavigationBar from "./components/NavigationBar";
 import CreateLodging from "./pages/CreateLodging";
 import EditLodging from "./components/EditLodging";
 import LodgingDetails from "./pages/LodgingDetails";
+import UserProfileEdit from "./pages/UserProfileEdit";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -60,6 +62,9 @@ function App() {
           }
         />
         <Route path="*" element={<h1> 404 Not found</h1>} />
+
+        <Route path="/user/:userId/edit" element={<UserProfileEdit />} />
+        <Route path="/user/:userId" element={<UserProfile />} />
       </Routes>
       <NavigationBar />
     </>
@@ -67,4 +72,3 @@ function App() {
 }
 
 export default App;
-
