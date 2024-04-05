@@ -8,6 +8,8 @@ import IsProtected from "./components/IsProtected";
 import Dashboard from "./pages/Dashboard";
 import LodgingList from "./pages/LodgingList";
 import NavigationBar from "./components/NavigationBar";
+import UserProfileEdit from "./pages/UserProfileEdit";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
         <Route path="/lodging-list" element={<LodgingList />} />
 
         <Route path="*" element={<h1> 404 Not found</h1>} />
+
+        <Route path="/user/:userId/edit" element={<UserProfileEdit />} />
+        <Route path="/user/:userId" element={<UserProfile />} />
       </Routes>
       <NavigationBar />
     </>
@@ -34,4 +39,3 @@ function App() {
 }
 
 export default App;
-
