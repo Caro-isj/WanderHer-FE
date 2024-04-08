@@ -16,6 +16,7 @@ import UserProfile from "./pages/UserProfile";
 import ActivitiesList from "./pages/ActivitiesList";
 import ActivitiesDetails from "./pages/ActivitiesDetails";
 import ActivityForm from "./components/ActivityForm";
+import { EditActivity } from "./components/EditActivity";
 
 function App() {
   const [activities, setActivities] = useState("");
@@ -93,6 +94,17 @@ function App() {
           element={
             <IsProtected>
               <ActivityForm />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/activity-list/:activityId/edit"
+          element={
+            <IsProtected>
+              <EditActivity
+                activities={activities}
+                setActivities={setActivities}
+              />
             </IsProtected>
           }
         />

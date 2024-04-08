@@ -78,7 +78,7 @@ function UserProfileEdit() {
     };
 
     getUser();
-  }, [userId]);
+  }, []);
 
   return (
     <div>
