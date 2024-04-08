@@ -1,13 +1,7 @@
-body {
-  background-color: rgba(255, 255, 255, 255); /* Light background */
-  font-family: Arial, sans-serif; /* A clean, modern font */
-}
-
-h1 {
-  color: rgba(97, 55, 86, 255); /* Deep purple for headers */
-  text-align: center;
-  margin-bottom: 20px;
-}
+/* body {
+  background-color: rgba(255, 255, 255, 255); 
+  font-family: Arial, sans-serif; 
+} */
 
 .lodging-list-container {
   display: flex;
@@ -42,7 +36,12 @@ h1 {
 }
 
 .lodging-details h2 {
-  color: rgba(97, 55, 86, 255); /* Matching the title color with the main header */
+  color: rgba(
+    97,
+    55,
+    86,
+    255
+  ); /* Matching the title color with the main header */
   font-size: 1.25rem;
   margin: 10px 0;
 }
@@ -87,7 +86,12 @@ input[type="text"] {
 
 /* Styling select dropdowns */
 select {
-  background-color: rgba(255, 255, 255, 255); /* Matching background with input */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    255
+  ); /* Matching background with input */
   color: rgba(97, 55, 86, 255); /* Dropdown text color */
   cursor: pointer; /* Indicates the dropdown is clickable */
 }

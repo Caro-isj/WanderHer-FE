@@ -3,12 +3,11 @@ import "../styles/NavigationBarStyle.css";
 import { useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {
+  const nav = useNavigate();
 
-     const nav = useNavigate();
- 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    nav("/")
+    nav("/");
   };
 
   return (
