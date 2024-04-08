@@ -8,7 +8,7 @@ function LodgingDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/lodging/:lodgingId`)
+      .get(`http://localhost:5005/lodging/${lodgingId}`)
       .then((response) => {
         setLodgingDetails(response.data);
       })

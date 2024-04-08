@@ -23,6 +23,8 @@ export default function LodgingList() {
            });
          });
          setAvailableAmenities([...amenitiesSet]);
+         console.log(response.data);
+         console.log(lodging);
       })
       .catch((error) => {
         console.log("Couldn't get the lodgings you were expecting", error);
@@ -99,7 +101,7 @@ export default function LodgingList() {
       </div>
       <div className="lodging-list-container">
         {filteredLodgings.length > 0 ? (
-          filteredLodgings.map((lodging) => <div key={lodging.id}></div>)
+          filteredLodgings.map((lodging) => <div key={lodging._id}></div>)
         ) : (
           <p>No lodgings found.</p>
         )}
@@ -107,13 +109,13 @@ export default function LodgingList() {
       <div>
         {filteredLodgings.length > 0 ? (
           filteredLodgings.map((lodging) => (
-            <Link key={lodging.id} to={`/lodging/${lodging.id}`}>
+            <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
               <div className="lodging-item">
                 <img
                   src={lodging.images} // Make sure this is a valid URL
                   alt={lodging.title}
                   style={{ width: "100%", height: "auto" }}
-                />
+                  />
                 <div className="lodging-details">
                   <h2>{lodging.title}</h2>
                   <p>{lodging.description}</p>
