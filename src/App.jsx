@@ -13,8 +13,13 @@ import EditLodging from "./components/EditLodging";
 import LodgingDetails from "./pages/LodgingDetails";
 import UserProfileEdit from "./pages/UserProfileEdit";
 import UserProfile from "./pages/UserProfile";
+import ActivitiesList from "./pages/ActivitiesList";
+import ActivitiesDetails from "./pages/ActivitiesDetails";
+import ActivityForm from "./components/ActivityForm";
 
 function App() {
+  const [activities, setActivities] = useState("");
+
   return (
     <>
       <Routes>
@@ -60,9 +65,38 @@ function App() {
               <LodgingDetails />
             </IsProtected>
           }
+        />{" "}
+        <Route
+          path="/activity-list"
+          element={
+            <IsProtected>
+              <ActivitiesList
+                activities={activities}
+                setActivities={setActivities}
+              />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/activity-list/:activityId"
+          element={
+            <IsProtected>
+              <ActivitiesDetails
+                activities={activities}
+                setActivities={setActivities}
+              />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/activity-form"
+          element={
+            <IsProtected>
+              <ActivityForm />
+            </IsProtected>
+          }
         />
         <Route path="*" element={<h1> 404 Not found</h1>} />
-
         <Route path="/user/:userId/edit" element={<UserProfileEdit />} />
         <Route path="/user/:userId" element={<UserProfile />} />
       </Routes>

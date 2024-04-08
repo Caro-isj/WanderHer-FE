@@ -15,7 +15,7 @@ export default function NavigationBar() {
       <button onClick={() => nav("/dashboard")}>Dashboard</button>
       <button>Profile</button>
       <button onClick={() => nav("/lodging-list")}>Accomodations</button>
-      <button>Activities</button>
+      <button onClick={() => nav("/activity-list")}>Activities</button>
       <button>Alert!</button>
       <button onClick={handleLogout}>Log out</button>
     </div>

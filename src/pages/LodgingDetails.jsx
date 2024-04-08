@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "../styles/LodgingDetailsStyle.css";
+import { Link } from "react-router-dom";
 
 function LodgingDetails() {
   const [lodgingDetails, setLodgingDetails] = useState(null);
@@ -8,7 +10,7 @@ function LodgingDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/lodging/:lodgingId`)
+      .get(`http://localhost:5005/lodging/${lodgingId}`)
       .then((response) => {
         setLodgingDetails(response.data);
       })
@@ -38,6 +40,9 @@ function LodgingDetails() {
       {lodgingDetails.observations && (
         <p>Observations: {lodgingDetails.observations}</p>
       )}
+      <Link to={`/edit-lodging/${lodgingId}`}>
+        <button>Edit Lodging</button>
+      </Link>
     </div>
   );
 }

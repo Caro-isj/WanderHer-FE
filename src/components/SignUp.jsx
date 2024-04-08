@@ -19,7 +19,7 @@ export default function SignUp() {
       .post("http://localhost:5005/auth/signup", userToCreate)
       .then((response) => {
         console.log("you created a user", response.data);
-        nav("/login");
+        nav("/activity-list");
       })
       .catch((err) => {
         console.log("there was an error signing up", err.response.data.message);
