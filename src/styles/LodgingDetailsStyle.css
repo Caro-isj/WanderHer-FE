@@ -1,0 +1,36 @@
+
+
+.container {
+  padding: 20px;
+  
+}
+
+.img-container img {
+  border: 5px solid rgba(183,136,174);
+}
+
+.button {
+  background-color: rgba(158,242,197);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  color: rgba(97,55,86);
+}
+
+.button:hover {
+  background-color: rgba(247,166,166);
+}
+
+.highlight {
+  background-color: rgba(247,166,166);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.secondary-info {
+  color: rgba(239,252,73);
+}

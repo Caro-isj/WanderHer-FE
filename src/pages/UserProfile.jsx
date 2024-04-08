@@ -9,8 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import placeholderImage from "../assets/profilepic.png";
 
-// Import the string from the .env with URL of the API/server - http://localhost:5005
-// const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 function UserProfile() {
   const [user, setUser] = useState(null);
@@ -20,7 +19,7 @@ function UserProfile() {
   useEffect(() => {
     const getUser = () => {
       axios
-        .get(`http://localhost:5005/user/${userId}`)
+        .get(`${API_URL}/user/${userId}`)
         .then((response) => {
           const oneUser = response.data;
           console.log(oneUser);
@@ -54,6 +53,12 @@ function UserProfile() {
               <p>
                 {user.firstName} {user.lastName}
               </p>
+              <p>
+                {user.age} {user.occupation}
+              </p>
+              <p>{user.location}</p>
+              <p>{user.aboutMe}</p>
+              <p>{user.languages}</p>
               <p>
                 <strong>Email:</strong> {user.email}
               </p>
