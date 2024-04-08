@@ -69,22 +69,33 @@ function App() {
         <Route
           path="/activity-list"
           element={
-            <ActivitiesList
-              activities={activities}
-              setActivities={setActivities}
-            />
+            <IsProtected>
+              <ActivitiesList
+                activities={activities}
+                setActivities={setActivities}
+              />
+            </IsProtected>
           }
         />
         <Route
           path="/activity-list/:activityId"
           element={
-            <ActivitiesDetails
-              activities={activities}
-              setActivities={setActivities}
-            />
+            <IsProtected>
+              <ActivitiesDetails
+                activities={activities}
+                setActivities={setActivities}
+              />
+            </IsProtected>
           }
         />
-        <Route path="/activity-form" element={<ActivityForm />} />
+        <Route
+          path="/activity-form"
+          element={
+            <IsProtected>
+              <ActivityForm />
+            </IsProtected>
+          }
+        />
         <Route path="*" element={<h1> 404 Not found</h1>} />
         <Route path="/user/:userId/edit" element={<UserProfileEdit />} />
         <Route path="/user/:userId" element={<UserProfile />} />

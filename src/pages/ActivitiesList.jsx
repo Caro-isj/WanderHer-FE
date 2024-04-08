@@ -27,6 +27,10 @@ export default function ActivitiesList() {
   return (
     <div>
       <div className="activity-list">
+        <h1>Activity List</h1>
+        <Link to="/activity-form">
+          <button>Add an activity</button>
+        </Link>
         {activities.length > 0 ? (
           activities.map((oneAct) => {
             return (
