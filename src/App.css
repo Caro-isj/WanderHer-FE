@@ -1,11 +1,11 @@
 @font-face {
   font-family: Mountains;
-  src: url("../assets/beyond_the_mountains.otf");
+  src: url("./assets/beyond_the_mountains.otf");
 }
 
 @font-face {
   font-family: CenturyG;
-  src: url("../assets/GOTHIC.TTF");
+  src: url("./assets/GOTHIC.TTF");
 }
 
 #root {
@@ -26,7 +26,7 @@ a:hover {
 body {
   color: rgba(97, 55, 86, 255);
   font-family: CenturyG;
-  background-image: url("../assets/6543832.jpg");
+  background-image: url("./assets/6543832.jpg");
   background-size: 100%;
   padding-bottom: 60px;
   position: relative;
