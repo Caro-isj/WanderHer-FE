@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/LodgingListStyle.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+
 export default function LodgingList() {
   const [lodging, setLodging] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,18 +15,18 @@ export default function LodgingList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/lodging")
+      .get(`${API_URL}/lodging`)
       .then((response) => {
         setLodging(response.data);
-         const amenitiesSet = new Set();
-         response.data.forEach((lodging) => {
-           lodging.amenities.forEach((amenity) => {
-             amenitiesSet.add(amenity);
-           });
-         });
-         setAvailableAmenities([...amenitiesSet]);
-         console.log(response.data);
-         console.log(lodging);
+        const amenitiesSet = new Set();
+        response.data.forEach((lodging) => {
+          lodging.amenities.forEach((amenity) => {
+            amenitiesSet.add(amenity);
+          });
+        });
+        setAvailableAmenities([...amenitiesSet]);
+        console.log(response.data);
+        console.log(lodging);
       })
       .catch((error) => {
         console.log("Couldn't get the lodgings you were expecting", error);
@@ -115,7 +117,7 @@ export default function LodgingList() {
                   src={lodging.images} // Make sure this is a valid URL
                   alt={lodging.title}
                   style={{ width: "100%", height: "auto" }}
-                  />
+                />
                 <div className="lodging-details">
                   <h2>{lodging.title}</h2>
                   <p>{lodging.description}</p>

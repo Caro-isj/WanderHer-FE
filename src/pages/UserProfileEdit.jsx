@@ -189,6 +189,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+
 const DEFAULT_USER_FORM_VALUES = {
   userName: "",
   firstName: "",
@@ -231,7 +233,7 @@ function UserProfileEdit() {
     setLoading(true);
 
     axios
-      .put(`http://localhost:5005/user/${userId}`, formData, {
+      .put(`${API_URL}/user/${userId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -253,7 +255,7 @@ function UserProfileEdit() {
   useEffect(() => {
     const getUser = () => {
       axios
-        .get(`http://localhost:5005/user/${userId}`)
+        .get(`${API_URL}/user/${userId}`)
         .then((response) => {
           const userData = response.data;
           setUser(userData);

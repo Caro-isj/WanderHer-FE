@@ -4,13 +4,15 @@ import { useParams } from "react-router-dom";
 import "../styles/LodgingDetailsStyle.css";
 import { Link } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+
 function LodgingDetails() {
   const [lodgingDetails, setLodgingDetails] = useState(null);
   const { lodgingId } = useParams();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/lodging/${lodgingId}`)
+      .get(`${API_URL}/lodging/${lodgingId}`)
       .then((response) => {
         setLodgingDetails(response.data);
       })
