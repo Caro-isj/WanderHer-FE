@@ -55,6 +55,12 @@ function UserProfile() {
                 {user.firstName} {user.lastName}
               </p>
               <p>
+                {user.age} {user.occupation}
+              </p>
+              <p>{user.location}</p>
+              <p>{user.aboutMe}</p>
+              <p>{user.languages}</p>
+              <p>
                 <strong>Email:</strong> {user.email}
               </p>
               <p>

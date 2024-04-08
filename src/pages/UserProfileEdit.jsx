@@ -196,6 +196,11 @@ const DEFAULT_USER_FORM_VALUES = {
   email: "",
   phoneNumber: 0,
   profilePicture: "",
+  aboutMe: "",
+  location: "",
+  age: 0,
+  occupation: "",
+  languages: "",
 };
 
 function UserProfileEdit() {
@@ -216,6 +221,12 @@ function UserProfileEdit() {
     formData.append("email", user.email);
     formData.append("phoneNumber", user.phoneNumber);
     formData.append("profilePicture", image);
+    formData.append("profilePicture", image);
+    formData.append("aboutMe", user.aboutMe);
+    formData.append("location", user.location);
+    formData.append("age", user.age);
+    formData.append("occupation", user.occupation);
+    formData.append("languages", user.languages);
 
     setLoading(true);
 
@@ -253,6 +264,8 @@ function UserProfileEdit() {
 
     getUser();
   }, [userId]);
+
+  console.log(user.languages);
 
   return (
     <div>
@@ -302,6 +315,47 @@ function UserProfileEdit() {
 
         <label>Profile Picture:</label>
         <input type="file" name="profilePicture" onChange={handleChange} />
+
+        <label>About Me:</label>
+        <input
+          type="text"
+          name="aboutMe"
+          value={user.aboutMe}
+          onChange={handleChange}
+        />
+        <label>Location:</label>
+        <input
+          type="text"
+          name="location"
+          value={user.location}
+          onChange={handleChange}
+        />
+        <label>Age:</label>
+        <input
+          type="number"
+          name="age"
+          value={user.age}
+          onChange={handleChange}
+        />
+
+        <label>Occupation:</label>
+        <input
+          type="text"
+          name="occupation"
+          value={user.occupation}
+          onChange={handleChange}
+        />
+
+        <label>Languages:</label>
+        <select name="languages" value={user.languages} onChange={handleChange}>
+          <option value="English">English</option>
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
+          <option value="German">German</option>
+          <option value="Portuguese">Portuguese</option>
+          <option value="Dutch">Dutch</option>
+          <option value="Other">Other</option>
+        </select>
 
         <button disabled={loading} type="submit">
           Save
