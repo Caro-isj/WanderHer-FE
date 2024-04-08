@@ -1,0 +1,120 @@
+body {
+  background-color: rgba(255, 255, 255, 255); /* Light background */
+  font-family: Arial, sans-serif; /* A clean, modern font */
+}
+
+h1 {
+  color: rgba(97, 55, 86, 255); /* Deep purple for headers */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.lodging-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.lodging-item {
+  width: 300px; /* Fixed width for each lodging card */
+  border: 1px solid rgba(183, 136, 174, 255); /* Soft purple borders */
+  border-radius: 10px; /* Rounded corners for the cards */
+  overflow: hidden; /* Ensures images don't overflow their container */
+  background-color: rgba(255, 255, 255, 255); /* White background for content */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.lodging-item:hover {
+  transform: translateY(-5px); /* Slight raise effect on hover */
+}
+
+.lodging-item img {
+  width: 100%; /* Ensure image covers the card width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the image covers the area nicely */
+}
+
+.lodging-details {
+  padding: 15px;
+}
+
+.lodging-details h2 {
+  color: rgba(97, 55, 86, 255); /* Matching the title color with the main header */
+  font-size: 1.25rem;
+  margin: 10px 0;
+}
+
+.lodging-details p {
+  color: rgba(97, 55, 86, 255); /* Soft color for text */
+  margin: 5px 0;
+}
+
+.button-add {
+  background-color: rgba(158, 242, 197, 255); /* Soft green for add button */
+  color: rgba(97, 55, 86, 255);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  font-size: 1rem;
+}
+
+.button-add:hover {
+  background-color: rgba(183, 136, 174, 255); /* Change color on hover */
+}
+
+/* Styles for the search bar and input fields */
+input[type="text"],
+select {
+  width: 100%; /* Full width to fit container */
+  padding: 10px; /* Ample padding for touch targets */
+  margin: 10px 0; /* Spacing between fields */
+  border: 1px solid rgba(183, 136, 174, 255); /* Soft border color */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Box sizing to ensure padding doesn't affect width */
+}
+
+/* Specific styles for the search input to differentiate it */
+input[type="text"] {
+  background-color: rgba(255, 255, 255, 255); /* Light background */
+  color: rgba(97, 55, 86, 255); /* Text color */
+}
+
+/* Styling select dropdowns */
+select {
+  background-color: rgba(255, 255, 255, 255); /* Matching background with input */
+  color: rgba(97, 55, 86, 255); /* Dropdown text color */
+  cursor: pointer; /* Indicates the dropdown is clickable */
+}
+
+/* Enhancing the appearance of checkboxes for amenities */
+input[type="checkbox"] {
+  accent-color: rgba(158, 242, 197, 255); /* Color of the checkbox */
+  margin-right: 5px; /* Spacing between the checkbox and its label */
+}
+
+/* Styling labels for better readability */
+label {
+  display: block; /* Each label on a new line */
+  margin: 5px 0; /* Spacing around labels */
+  color: rgba(97, 55, 86, 255); /* Label text color */
+  cursor: pointer; /* Indicates the label is associated with an input */
+}
+
+/* Styling for the fieldset and legend for amenities */
+fieldset {
+  border: 1px solid rgba(183, 136, 174, 255); /* Border color for the fieldset */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding inside the fieldset */
+  margin: 10px 0; /* Margin around the fieldset */
+}
+
+legend {
+  color: rgba(97, 55, 86, 255); /* Text color for the legend */
+  font-size: 1rem; /* Font size */
+}

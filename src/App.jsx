@@ -8,6 +8,11 @@ import IsProtected from "./components/IsProtected";
 import Dashboard from "./pages/Dashboard";
 import LodgingList from "./pages/LodgingList";
 import NavigationBar from "./components/NavigationBar";
+import CreateLodging from "./pages/CreateLodging";
+import EditLodging from "./components/EditLodging";
+import LodgingDetails from "./pages/LodgingDetails";
+import UserProfileEdit from "./pages/UserProfileEdit";
+import UserProfile from "./pages/UserProfile";
 import ActivitiesList from "./pages/ActivitiesList";
 import ActivitiesDetails from "./pages/ActivitiesDetails";
 import ActivityForm from "./components/ActivityForm";
@@ -29,7 +34,38 @@ function App() {
             </IsProtected>
           }
         />
-        <Route path="/lodging-list" element={<LodgingList />} />
+        <Route
+          path="/lodging-list"
+          element={
+            <IsProtected>
+              <LodgingList />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/create-lodging"
+          element={
+            <IsProtected>
+              <CreateLodging />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/edit-lodging/:lodgingId"
+          element={
+            <IsProtected>
+              <EditLodging />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/lodging/:lodgingId"
+          element={
+            <IsProtected>
+              <LodgingDetails />
+            </IsProtected>
+          }
+        />{" "}
         <Route
           path="/activity-list"
           element={
@@ -48,10 +84,10 @@ function App() {
             />
           }
         />
-
         <Route path="/activity-form" element={<ActivityForm />} />
-
         <Route path="*" element={<h1> 404 Not found</h1>} />
+        <Route path="/user/:userId/edit" element={<UserProfileEdit />} />
+        <Route path="/user/:userId" element={<UserProfile />} />
       </Routes>
       <NavigationBar />
     </>
