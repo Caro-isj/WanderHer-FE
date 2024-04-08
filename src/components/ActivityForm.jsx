@@ -3,6 +3,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 export const ActivityForm = () => {
+  // const [activityData, setActivityData] = useState({
+  //   title: "",
+  //   description: "",
+  //   location : "",
+  //   meetingPoint: "",
+  //   capacity: "",
+  //   date: "",
+  //   price: "",
+  //   images: "",
+  //   thumbnail: ""
+  // })
   const { userId } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -143,8 +154,8 @@ export const ActivityForm = () => {
             }}
           />
         </label>
+        <button>Submit</button>
       </form>
-      <button>Submit</button>
     </div>
   );
 };
