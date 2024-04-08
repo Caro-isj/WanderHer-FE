@@ -23,6 +23,7 @@ function UserProfile() {
         .get(`http://localhost:5005/user/${userId}`)
         .then((response) => {
           const oneUser = response.data;
+          console.log(oneUser);
           setUser(oneUser);
           setLoading(false);
         })
@@ -57,11 +58,11 @@ function UserProfile() {
                 <strong>Email:</strong> {user.email}
               </p>
               <p>
-                <strong>Phone:</strong> {user.phone}
+                <strong>Phone:</strong> {user.phoneNumber}
               </p>
             </div>
             <div>
-              <Link to={`/user/${user.id}/edit`}>
+              <Link to={`/user/${user._id}/edit`}>
                 <button>Edit</button>
               </Link>
             </div>

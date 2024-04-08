@@ -2,91 +2,82 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// Import the string from the .env with URL of the API/server - http://localhost:5005
-// const API_URL = import.meta.env.VITE_API_URL;
+// // Import the string from the .env with URL of the API/server - http://localhost:5005
+// // const API_URL = import.meta.env.VITE_API_URL;
 
-const DEFAULT_STUDENT_FORM_VALUES = {
+const defaultUserFormValues = {
   userName: "",
   firstName: "",
   lastName: "",
   email: "",
-  phoneNumber: "",
+  phoneNumber: 0,
   profilePicture: "",
 };
 
 function UserProfileEdit() {
-  const [user, setUser] = useState({ ...DEFAULT_STUDENT_FORM_VALUES });
+  const [user, setUser] = useState({ ...defaultUserFormValues });
   const [loading, setLoading] = useState(true);
-  //   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-
-  //   const { userId } = useParams();
-
+  const { userId } = useParams();
   const navigate = useNavigate();
+  //   //   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
-  //  PROFILE PICTURE - creating form data and add properties to it
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  // const formData = new FormData();
-  // const image = event.target.image.files[0];
-  // formData.append("profilePicture", image);
-  // formData.append("userName", userName);
-  // formData.append("email", email);
-  // formData.append("password", password);
+    const formData = new FormData();
+    const image = e.target.profilePicture.files[0];
 
-  const handleSubmit = () => {
-    const requestBody = { ...user };
+    formData.append("userName", user.userName);
+    formData.append("firstName", user.firstName);
+    formData.append("lastName", user.lastName);
+    formData.append("email", user.email);
+    formData.append("phoneNumber", user.phoneNumber);
+    formData.append("profilePicture", image);
 
     setLoading(true);
 
     axios
-      .put(`http://localhost:5005/user/`, requestBody)
+      .put(`http://localhost:5005/user/${userId}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then(() => {
-        navigate(`/students/details/${user.id}`);
+        navigate(`/user/${userId}`);
       })
       .catch((error) => console.log(error));
   };
 
-  //   const handleDelete = () => {
-  //     axios
-  //       .delete(`http://localhost:5005/user/${user.id}`)
-  //       .then(() => {
-  //         navigate("/");
-  //       })
-  //       .catch((error) => console.log(error));
-  //   };
+  //   //   const handleDelete = () => {
+  //   //     axios
+  //   //       .delete(`http://localhost:5005/user/${user.id}`)
+  //   //       .then(() => {
+  //   //         navigate("/");
+  //   //       })
+  //   //       .catch((error) => console.log(error));
+  //   //   };
 
   const handleChange = (e) => {
-    const { name, value, type, checked, options, multiple } = e.target;
-
-    let inputValue = type === "checkbox" ? checked : value;
-
-    if (multiple && options) {
-      inputValue = [];
-      for (let i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          inputValue.push(options[i].value);
-        }
-      }
-    }
-
+    const { name, value } = e.target;
     setUser((prevUser) => ({
       ...prevUser,
-      [name]: inputValue,
+      [name]: value,
     }));
   };
 
   useEffect(() => {
     const getUser = () => {
       axios
-        .get(`http://localhost:5005/`)
+        .get(`http://localhost:5005/user/${userId}`)
         .then((response) => {
           const userData = response.data;
-          setStudent(userData);
+          setUser(userData);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
+        .finally(() => setLoading(false));
     };
 
     getUser();
-    setLoading(false);
   }, [userId]);
 
   return (
@@ -99,29 +90,29 @@ function UserProfileEdit() {
 
           <div >
             <p >
-              Are you sure you want to delete this student?
+              Are you sure you want to delete this user?
             </p>
 
             <div >
               <button
                 onClick={handleDelete}
-               
+
               >
                 Yes
               </button>
               <button
                 onClick={() => setShowDeleteConfirmation(false)}
-               
+
               >
                 No
               </button>
             </div>
           </div>
         </div>
-      )} */}
+      )}  */}
 
       <form onSubmit={handleSubmit}>
-        <label>User Name::</label>
+        <label>User Name:</label>
         <input
           type="text"
           name="userName"
@@ -164,23 +155,14 @@ function UserProfileEdit() {
         />
 
         <label>Profile Picture:</label>
-        <input
-          type="file"
-          name="profilePicture"
-          value={user.profilePicture}
-          onChange={handleChange}
-        />
+        <input type="file" name="profilePicture" onChange={handleChange} />
 
-        {/* <label>Profile Picture:
-        <input type="file" name="image" /> 
-        </label> */}
-
-        <button disabled={loading} type="submit" onClick={() => handleSubmit()}>
+        <button disabled={loading} type="submit">
           Save
         </button>
-        <button disabled={loading} type="button" onClick={() => handleDelete()}>
-          Delete
-        </button>
+        {/* <button disabled={loading} type="button" onClick={() => handleDelete()}>
+           Delete
+        </button> */}
       </form>
     </div>
   );
