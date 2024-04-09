@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export const ActivityForm = () => {
   const { userId } = useParams();
@@ -32,7 +33,7 @@ export const ActivityForm = () => {
     };
 
     axios
-      .post("http://localhost:5005/activity", activityToCreate, {
+      .post(`${API_URL}/activity`, activityToCreate, {
         headers: {
           authorization: `Bearer ${theToken}`,
         },

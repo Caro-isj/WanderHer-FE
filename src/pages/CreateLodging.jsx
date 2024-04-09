@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 function CreateLodging() {
   const [lodgingData, setLodgingData] = useState({
@@ -12,13 +14,18 @@ function CreateLodging() {
     maxStay: "",
     images: [],
     observations: "",
+    latitude: null,
+    longitude: null
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLodgingData((prevState) => ({
       ...prevState,
       [name]: value,
+
     }));
   };
 
@@ -37,10 +44,10 @@ function CreateLodging() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5005/lodging", lodgingData)
+      .post(`${API_URL}/lodging`, lodgingData)
       .then((response) => {
         console.log("Lodging created:", response.data);
-       
+             navigate(`/lodging-list`);
       })
       .catch((error) => {
         console.error("Error creating lodging:", error);
@@ -134,6 +141,26 @@ function CreateLodging() {
           onChange={handleChange}
           required
           min="1"
+        />
+      </label>
+      <label>
+        Latitude:
+        <input
+          type="number"
+          name="latitude"
+          value={lodgingData.latitude}
+          onChange={handleChange}
+          step="0.00000001"
+        />
+      </label>
+      <label>
+        Longitude:
+        <input
+          type="number"
+          name="longitude"
+          value={lodgingData.longitude}
+          onChange={handleChange}
+          step="0.00000001"
         />
       </label>
       <label>

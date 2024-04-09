@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
-import { AuthContext } from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export default function LogIn() {
     const userToLogin = { email, password };
 
     axios
-      .post("http://localhost:5005/auth/login", userToLogin)
+      .post(`${API_URL}/auth/login`, userToLogin)
       .then((response) => {
         console.log("you logged in", response.data);
 

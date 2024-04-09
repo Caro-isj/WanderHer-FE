@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/ActivityStyle.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+
 export default function ActivitiesList() {
   const [activities, setActivities] = useState("");
 
   const getActivities = async () => {
     try {
-      const allAct = await axios.get("http://localhost:5005/activity");
+      const allAct = await axios.get(`${API_URL}/activity`);
       setActivities(allAct.data);
     } catch (err) {
       console.log("Error fetching all activities", err);
