@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+
 
 function EditLodging() {
   const [lodgingData, setLodgingData] = useState({
@@ -13,6 +15,8 @@ function EditLodging() {
     maxStay: "",
     images: [],
     observations: "",
+    latitude: null,
+    longitude: null
   });
   const { lodgingId } = useParams(); // Assuming you're using React Router and have a route like "/edit-lodging/:lodgingId"
   const navigate = useNavigate();
@@ -20,13 +24,13 @@ function EditLodging() {
   useEffect(() => {
     if (lodgingId) {
       axios
-        .get(`http://localhost:5005/lodging/${lodgingId}`)
+        .get(`${API_URL}/lodging/${lodgingId}`)
         .then((response) => {
           setLodgingData(response.data);
         })
         .catch((error) => console.error("Error fetching lodging data:", error));
     }
-    console.log(lodgingId)
+    console.log(lodgingId);
   }, [lodgingId]);
 
   const handleChange = (e) => {
@@ -51,7 +55,7 @@ function EditLodging() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5005/lodging/${lodgingId}`, lodgingData)
+      .put(`${API_URL}/lodging/${lodgingId}`, lodgingData)
       .then((response) => {
         console.log("Lodging updated:", response.data);
         navigate(`/lodging/${lodgingId}`); // Redirect to the lodging list or detail page after update
@@ -147,6 +151,24 @@ function EditLodging() {
           onChange={handleChange}
           required
           min="1"
+        />
+      </label>
+      <label>
+        Latitude:
+        <input
+          type="number"
+          name="latitude"
+          value={lodgingData.latitude}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Longitude:
+        <input
+          type="number"
+          name="longitude"
+          value={lodgingData.longitude}
+          onChange={handleChange}
         />
       </label>
       <label>

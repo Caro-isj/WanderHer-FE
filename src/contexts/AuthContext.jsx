@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 const AuthContext = createContext();
 
@@ -12,7 +13,7 @@ const AuthWrapper = ({ children }) => {
     const theToken = localStorage.getItem("authToken");
     if (theToken) {
       return axios
-        .get("http://localhost:5005/auth/verify", {
+        .get(`${API_URL}/auth/verify`, {
           headers: {
             authorization: `Bearer ${theToken}`,
           },
@@ -41,7 +42,6 @@ const AuthWrapper = ({ children }) => {
     authenticateUser();
   };
 
- 
   useEffect(() => {
     authenticateUser();
   }, []);
