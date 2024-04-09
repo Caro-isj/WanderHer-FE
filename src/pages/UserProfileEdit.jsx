@@ -202,12 +202,13 @@ const DEFAULT_USER_FORM_VALUES = {
   location: "",
   age: 0,
   occupation: "",
-  languages: "",
+  languages: [],
 };
 
 function UserProfileEdit() {
   const [user, setUser] = useState({ ...DEFAULT_USER_FORM_VALUES });
   const [loading, setLoading] = useState(true);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false); //DELETE
   const { userId } = useParams();
   const navigate = useNavigate();
 
@@ -244,12 +245,40 @@ function UserProfileEdit() {
       .catch((error) => console.log(error));
   };
 
+  const handleDelete = () => {
+    //DELETE
+    axios
+      .delete(`${API_URL}/user/${user.id}`)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prevUser) => ({
       ...prevUser,
       [name]: value,
     }));
+  };
+
+  const handleLanguageChange = (e) => {
+    const { value, checked } = e.target;
+    setUser((prevUser) => {
+      if (checked) {
+        return {
+          ...prevUser,
+          languages: [],
+          languages: [...prevUser.languages, value],
+        };
+      } else {
+        return {
+          ...prevUser,
+          languages: prevUser.languages.filter((lang) => lang !== value),
+        };
+      }
+    });
   };
 
   useEffect(() => {
@@ -272,6 +301,24 @@ function UserProfileEdit() {
   return (
     <div>
       <h3>Edit User</h3>
+
+      {showDeleteConfirmation && ( //DELETE
+        <div>
+          <div></div>
+
+          <div>
+            <p>Are you sure you want to delete this student?</p>
+
+            <div>
+              <button onClick={handleDelete}>Yes</button>
+              <button onClick={() => setShowDeleteConfirmation(false)}>
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit}>
         <label>User Name:</label>
         <input
@@ -340,7 +387,7 @@ function UserProfileEdit() {
           value={user.occupation}
           onChange={handleChange}
         />
-        <label>Languages:</label>
+        {/* <label>Languages:</label>
         <select name="languages" value={user.languages} onChange={handleChange}>
           <option value="English">English</option>
           <option value="Spanish">Spanish</option>
@@ -349,20 +396,148 @@ function UserProfileEdit() {
           <option value="Portuguese">Portuguese</option>
           <option value="Dutch">Dutch</option>
           <option value="Other">Other</option>
-        </select>
-        l
-        {/* {availableAmenities.map((amenity) => (
-          <label key={amenity}>
+        </select> */}
+
+        <label>Languages:</label>
+        <div>
+          <label>
             <input
               type="checkbox"
-              value={amenity}
-              onChange={handleAmenitiesChange}
-              checked={filterAmenities.includes(amenity)}
+              name="languages"
+              value="English"
+              checked={user.languages.includes("English")}
+              onChange={handleLanguageChange}
             />
-            {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
-          </label> */}
+            English
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Spanish"
+              checked={user.languages.includes("Spanish")}
+              onChange={handleLanguageChange}
+            />
+            Spanish
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="French"
+              checked={user.languages.includes("French")}
+              onChange={handleLanguageChange}
+            />
+            French
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="German"
+              checked={user.languages.includes("German")}
+              onChange={handleLanguageChange}
+            />
+            German
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Italian"
+              checked={user.languages.includes("Italian")}
+              onChange={handleLanguageChange}
+            />
+            Italian
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Portuguese"
+              checked={user.languages.includes("Portuguese")}
+              onChange={handleLanguageChange}
+            />
+            Portuguese
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Turkish"
+              checked={user.languages.includes("Turkish")}
+              onChange={handleLanguageChange}
+            />
+            Turkish
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Arabic"
+              checked={user.languages.includes("Arabic")}
+              onChange={handleLanguageChange}
+            />
+            Arabic
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Farsi"
+              checked={user.languages.includes("Farsi")}
+              onChange={handleLanguageChange}
+            />
+            Farsi
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Hebrew"
+              checked={user.languages.includes("Hebrew")}
+              onChange={handleLanguageChange}
+            />
+            Hebrew
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Russian"
+              checked={user.languages.includes("Russian")}
+              onChange={handleLanguageChange}
+            />
+            Russian
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Polish"
+              checked={user.languages.includes("Polish")}
+              onChange={handleLanguageChange}
+            />
+            Polish
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="languages"
+              value="Yoruba"
+              checked={user.languages.includes("Yoruba")}
+              onChange={handleLanguageChange}
+            />
+            Yoruba
+          </label>
+        </div>
+
         <button disabled={loading} type="submit">
           Save
+        </button>
+        {/* DELETE */}
+        <button disabled={loading} type="button" onClick={() => handleDelete()}>
+          Delete
         </button>
       </form>
     </div>

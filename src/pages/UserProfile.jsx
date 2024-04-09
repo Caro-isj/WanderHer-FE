@@ -66,6 +66,12 @@ function UserProfile() {
               <p>
                 <strong>Phone:</strong> {user.phoneNumber}
               </p>
+              {/* <p>
+                <strong>Activities by this user:</strong> {user.lodgings?.title}
+              </p>
+              <p>
+                <strong>Lodgings by this user:</strong> {user.activities?.title}
+              </p> */}
             </div>
             <div>
               <Link to={`/user/${user._id}/edit`}>
