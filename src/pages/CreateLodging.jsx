@@ -43,16 +43,36 @@ function CreateLodging() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const myFormData = new FormData();
+    const imageFile = e.target.image.files[0];
+    if (imageFile) {
+      // Only append if a file is selected
+      myFormData.append("image", imageFile);
+    }
+
+    // Append other lodging data
+    for (const key in lodgingData) {
+      if (key !== "images") {
+        // Exclude images as it's handled separately
+        myFormData.append(key, lodgingData[key]);
+      }
+    }
+
     axios
-      .post(`${API_URL}/lodging`, lodgingData)
+      .post(`${API_URL}/lodging`, myFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((response) => {
         console.log("Lodging created:", response.data);
-             navigate(`/lodging-list`);
+        navigate("/lodging-list");
       })
       .catch((error) => {
         console.error("Error creating lodging:", error);
       });
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -102,13 +122,44 @@ function CreateLodging() {
       <fieldset>
         <legend>Amenities:</legend>
         {[
-          "wifi",
-          "private bathroom",
-          "garden",
-          "pet-friendly",
-          "air conditioner",
-          "kitchen",
-          "heating",
+          "Wi-Fi",
+          "Air Conditioning/Heating",
+          "Essentials ",
+          "Hot Water",
+          "Kitchen",
+          "Coffee Maker",
+          "Microwave",
+          "Refrigerator",
+          "Hangers",
+          "Hair Dryer",
+          "Iron",
+          "Extra Bedding",
+          "Smoke Detector",
+          "Carbon Monoxide Detector",
+          "First Aid Kit",
+          "Fire Extinguisher",
+          "TV",
+          "Washer/Dryer",
+          "Dishwasher",
+          "Private Entrance",
+          "Balcony/Terrace",
+          "BBQ Grill",
+          "Garden or Backyard",
+          "Outdoor Furniture",
+          "Crib",
+          "High Chair",
+          "Baby Safety Gates",
+          "Step-free access",
+          "Wide doorways",
+          "Accessible parking spot",
+          "Pool",
+          "Hot Tub",
+          "Gym",
+          "Private Parking",
+          "Clothing Storage",
+          "Mailbox Access",
+          "Pet-Friendly Amenities",
+          "Dedicated Workspace",
         ].map((amenity) => (
           <label key={amenity}>
             <input
@@ -163,6 +214,17 @@ function CreateLodging() {
           step="0.00000001"
         />
       </label>
+      <p>
+        <a
+          href="https://www.latlong.net/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discover your house's precise coordinates with ease! Simply click here
+          📍
+        </a>
+        .
+      </p>
       <label>
         Observations:
         <textarea
@@ -170,6 +232,10 @@ function CreateLodging() {
           value={lodgingData.observations}
           onChange={handleChange}
         />
+      </label>
+      <label>
+        Profile Image:
+        <input type="file" name="image" />
       </label>
       <button type="submit">Create Lodging</button>
     </form>
