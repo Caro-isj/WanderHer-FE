@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export const ActivityForm = () => {
@@ -15,7 +16,7 @@ export const ActivityForm = () => {
   const [images, setImages] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [host, setHost] = useState(userId);
-  const [latitude, setLatitude] = useState(0)
+  const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const theToken = localStorage.getItem("authToken");
   const nav = useNavigate();
@@ -33,7 +34,7 @@ export const ActivityForm = () => {
       images,
       thumbnail,
       latitude,
-      longitude
+      longitude,
     };
 
     axios
@@ -83,7 +84,7 @@ export const ActivityForm = () => {
         </label>
         <label>
           Description :
-          <input
+          <textarea
             type="text"
             value={description}
             onChange={(e) => {

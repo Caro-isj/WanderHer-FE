@@ -14,6 +14,7 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 function UserProfile() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
   const { userId } = useParams();
 
   useEffect(() => {
@@ -65,6 +66,12 @@ function UserProfile() {
               <p>
                 <strong>Phone:</strong> {user.phoneNumber}
               </p>
+              {/* <p>
+                <strong>Activities by this user:</strong> {user.lodgings?.title}
+              </p>
+              <p>
+                <strong>Lodgings by this user:</strong> {user.activities?.title}
+              </p> */}
             </div>
             <div>
               <Link to={`/user/${user._id}/edit`}>
