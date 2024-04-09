@@ -38,7 +38,7 @@
 //     setLoading(true);
 
 //     axios
-//       .put(`http://localhost:5005/user/`, requestBody)
+//       .put(`${API_URL}/user/`, requestBody)
 //       .then(() => {
 //         navigate(`/user/${userId}`);
 //       })
@@ -47,7 +47,7 @@
 
 //   //   const handleDelete = () => {
 //   //     axios
-//   //       .delete(`http://localhost:5005/user/${user.id}`)
+//   //       .delete(`${API_URL}/user/${user.id}`)
 //   //       .then(() => {
 //   //         navigate("/");
 //   //       })
@@ -77,7 +77,7 @@
 //   useEffect(() => {
 //     const getUser = () => {
 //       axios
-//         .get(`http://localhost:5005/user/${userId}`)
+//         .get(`${API_URL}/user/${userId}`)
 //         .then((response) => {
 //           const userData = response.data;
 //           console.log(userData);
@@ -265,7 +265,7 @@ function UserProfileEdit() {
     };
 
     getUser();
-  }, [userId]);
+  }, []);
 
   console.log(user.languages);
 

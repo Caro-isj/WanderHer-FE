@@ -1,19 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export const ActivityForm = () => {
-  // const [activityData, setActivityData] = useState({
-  //   title: "",
-  //   description: "",
-  //   location : "",
-  //   meetingPoint: "",
-  //   capacity: "",
-  //   date: "",
-  //   price: "",
-  //   images: "",
-  //   thumbnail: ""
-  // })
   const { userId } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -25,7 +15,7 @@ export const ActivityForm = () => {
   const [images, setImages] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [host, setHost] = useState(userId);
-
+  const theToken = localStorage.getItem("authToken");
   const nav = useNavigate();
 
   const handleSubmit = (event) => {
@@ -40,11 +30,14 @@ export const ActivityForm = () => {
       price,
       images,
       thumbnail,
-      host,
     };
 
     axios
-      .post("http://localhost:5005/activity", activityToCreate)
+      .post(`${API_URL}/activity`, activityToCreate, {
+        headers: {
+          authorization: `Bearer ${theToken}`,
+        },
+      })
       .then((createAct) => {
         console.log("you created an activity", createAct.data);
         nav("/activity-list");

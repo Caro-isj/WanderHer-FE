@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export default function SignUp() {
   const [userName, setUserName] = useState("");
@@ -16,7 +17,7 @@ export default function SignUp() {
     const userToCreate = { userName, email, password };
 
     axios
-      .post("http://localhost:5005/auth/signup", userToCreate)
+      .post(`${API_URL}/auth/signup`, userToCreate)
       .then((response) => {
         console.log("you created a user", response.data);
         nav("/activity-list");
