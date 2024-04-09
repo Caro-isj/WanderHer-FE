@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+
 export default function ActivitiesDetails({ activities, setActivities }) {
   const [activity, setActivity] = useState(activities);
   const { activityId } = useParams();
@@ -11,9 +13,7 @@ export default function ActivitiesDetails({ activities, setActivities }) {
   useEffect(() => {
     const getOneAct = async () => {
       try {
-        const thisAct = await axios.get(
-          `http://localhost:5005/activity/${activityId}`
-        );
+        const thisAct = await axios.get(`${API_URL}/activity/${activityId}`);
         setActivity(thisAct.data);
         console.log(thisAct.data);
       } catch (err) {
@@ -37,7 +37,7 @@ export default function ActivitiesDetails({ activities, setActivities }) {
         Start : {activity.startTime} - End : {activity.endTime}
       </p> */}
 
-      <h3>Hosted by : {activity.host.username}</h3>
+      <h3>Hosted by : {activity.host}</h3>
       {}
       <h1>MAP</h1>
       <button>Book now</button>
