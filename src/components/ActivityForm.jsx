@@ -16,6 +16,8 @@ export const ActivityForm = () => {
   const [images, setImages] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [host, setHost] = useState(userId);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
   const theToken = localStorage.getItem("authToken");
   const nav = useNavigate();
 
@@ -31,6 +33,8 @@ export const ActivityForm = () => {
       price,
       images,
       thumbnail,
+      latitude,
+      longitude,
     };
 
     axios
@@ -80,7 +84,7 @@ export const ActivityForm = () => {
         </label>
         <label>
           Description :
-          <input
+          <textarea
             type="text"
             value={description}
             onChange={(e) => {
@@ -148,6 +152,37 @@ export const ActivityForm = () => {
             }}
           />
         </label>
+        <label>
+          Latitude:
+          <input
+            type="number"
+            name="latitude"
+            value={latitude}
+            onChange={(e) => setLatitude(e.target.value)}
+            step="0.00000001"
+          />
+        </label>
+        <label>
+          Longitude:
+          <input
+            type="number"
+            name="longitude"
+            value={longitude}
+            onChange={(e) => setLongitude(e.target.value)}
+            step="0.00000001"
+          />
+        </label>
+        <p>
+          <a
+            href="https://www.latlong.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Discover your house's precise coordinates with ease! Simply click
+            here 📍
+          </a>
+          .
+        </p>
         <button>Submit</button>
       </form>
     </div>
