@@ -15,7 +15,7 @@ function CreateLodging() {
     images: [],
     observations: "",
     latitude: null,
-    longitude: null
+    longitude: null,
   });
 
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ function CreateLodging() {
     setLodgingData((prevState) => ({
       ...prevState,
       [name]: value,
-
     }));
   };
 
@@ -44,11 +43,9 @@ function CreateLodging() {
     e.preventDefault();
 
     const myFormData = new FormData();
-    const imageFile = e.target.image.files[0];
-    if (imageFile) {
-      // Only append if a file is selected
-      myFormData.append("image", imageFile);
-    }
+    const image = e.target.images.files[0];
+
+    myFormData.append(`images`, image);
 
     // Append other lodging data
     for (const key in lodgingData) {
@@ -56,6 +53,9 @@ function CreateLodging() {
         // Exclude images as it's handled separately
         myFormData.append(key, lodgingData[key]);
       }
+    }
+    for (let [key, value] of myFormData.entries()) {
+      console.log(key, value);
     }
 
     axios
@@ -72,7 +72,6 @@ function CreateLodging() {
         console.error("Error creating lodging:", error);
       });
   };
-
 
   return (
     <form onSubmit={handleSubmit}>
@@ -235,7 +234,7 @@ function CreateLodging() {
       </label>
       <label>
         Profile Image:
-        <input type="file" name="image" />
+        <input type="file" name="images" />
       </label>
       <button type="submit">Create Lodging</button>
     </form>
