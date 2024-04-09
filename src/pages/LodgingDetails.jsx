@@ -22,6 +22,7 @@ function LodgingDetails() {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [showAddReview, setShowAddReview] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
   const { user } = useContext(AuthContext);
 
@@ -46,6 +47,15 @@ function LodgingDetails() {
       })
       .catch((error) =>
         console.error("Error fetching lodging details:", error)
+      );
+
+    axios
+      .get(`${API_URL}/review/${lodgingId}`)
+      .then((response) => {
+        setReviews(response.data);
+      })
+      .catch((error) =>
+        console.error("Error fetching lodging reviews:", error)
       );
   }, [lodgingId]);
 
@@ -111,10 +121,15 @@ function LodgingDetails() {
           </>
         )}
       </div>
-      <Link to={`/edit-lodging/${lodgingId}`}>
-        <button>Edit Lodging</button>
-      </Link>
-      <button onClick={handleDelete}>Delete Lodging</button>
+      {user._id == lodgingDetails.host && (
+        <>
+          <Link to={`/edit-lodging/${lodgingId}`}>
+            <button>Edit Lodging</button>
+          </Link>
+          <button onClick={handleDelete}>Delete Lodging</button>
+        </>
+      )}
+
       <button onClick={showCreateReview}>Add Review</button>
       {showAddReview && (
         <form onSubmit={addReview}>
@@ -151,6 +166,19 @@ function LodgingDetails() {
           <button>Submit</button>
         </form>
       )}
+      <Link to={`/user/${lodgingDetails.host}`}>
+        <button>See Host!</button>
+      </Link>
+
+      <div>
+        {reviews.map((rev) => (
+          <>
+            <h2>{rev.title}</h2>
+            <p>{rev.comment}</p>
+            <p>{rev.rating}</p>
+          </>
+        ))}
+      </div>
     </div>
   );
 }

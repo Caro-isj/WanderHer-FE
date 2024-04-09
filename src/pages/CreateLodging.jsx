@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../contexts/AuthContext";
 import { useParams, useNavigate } from "react-router-dom";
+
+
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 function CreateLodging() {
+  const { user } = useContext(AuthContext);
   const [lodgingData, setLodgingData] = useState({
     title: "",
     description: "",
@@ -13,6 +17,7 @@ function CreateLodging() {
     maxGuests: "",
     maxStay: "",
     images: [],
+    host: user._id,
     observations: "",
     latitude: null,
     longitude: null,
