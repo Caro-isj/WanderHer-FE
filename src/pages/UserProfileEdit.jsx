@@ -280,7 +280,6 @@ function UserProfileEdit() {
           value={user.userName}
           onChange={handleChange}
         />
-
         <label>First Name:</label>
         <input
           type="text"
@@ -288,7 +287,6 @@ function UserProfileEdit() {
           value={user.firstName}
           onChange={handleChange}
         />
-
         <label>Last Name:</label>
         <input
           type="text"
@@ -296,7 +294,6 @@ function UserProfileEdit() {
           value={user.lastName}
           onChange={handleChange}
         />
-
         <label>Email:</label>
         <input
           type="email"
@@ -305,7 +302,6 @@ function UserProfileEdit() {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6"
         />
-
         <label>Phone:</label>
         <input
           type="tel"
@@ -314,10 +310,8 @@ function UserProfileEdit() {
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6"
         />
-
         <label>Profile Picture:</label>
         <input type="file" name="profilePicture" onChange={handleChange} />
-
         <label>About Me:</label>
         <input
           type="text"
@@ -339,7 +333,6 @@ function UserProfileEdit() {
           value={user.age}
           onChange={handleChange}
         />
-
         <label>Occupation:</label>
         <input
           type="text"
@@ -347,7 +340,6 @@ function UserProfileEdit() {
           value={user.occupation}
           onChange={handleChange}
         />
-
         <label>Languages:</label>
         <select name="languages" value={user.languages} onChange={handleChange}>
           <option value="English">English</option>
@@ -358,7 +350,17 @@ function UserProfileEdit() {
           <option value="Dutch">Dutch</option>
           <option value="Other">Other</option>
         </select>
-
+        l
+        {/* {availableAmenities.map((amenity) => (
+          <label key={amenity}>
+            <input
+              type="checkbox"
+              value={amenity}
+              onChange={handleAmenitiesChange}
+              checked={filterAmenities.includes(amenity)}
+            />
+            {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+          </label> */}
         <button disabled={loading} type="submit">
           Save
         </button>
