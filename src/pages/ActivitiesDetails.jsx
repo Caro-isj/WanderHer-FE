@@ -57,6 +57,22 @@ export default function ActivitiesDetails() {
   //   }
   // };
 
+  const handleDelete = () => {
+    if (confirm("Are you sure ?")) {
+      axios
+        .delete(`${API_URL}/activity/${activityId}`)
+        .then((response) => {
+          axios.get(`${API_URL}/activity`).then((response) => {
+            setActivity(response.data);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      nav("/activity-list");
+    }
+  };
+
   return (
     <div className="activity-details">
       <img src={activity.images} alt={activity.title} />
@@ -94,6 +110,8 @@ export default function ActivitiesDetails() {
         <button>Update activity</button>
       </Link>
       <button>Book now</button>
+
+      <button onClick={handleDelete}>Delete activity</button>
     </div>
   );
 }
