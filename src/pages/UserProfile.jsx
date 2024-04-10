@@ -10,24 +10,26 @@ function UserProfile() {
   const { user: loggedUser } = useContext(AuthContext);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userLodgings, setUserLodgings] = useState([]);
 
   const { userId } = useParams();
 
   useEffect(() => {
-    const getUser = () => {
-      axios
-        .get(`${API_URL}/user/${userId}`)
-        .then((response) => {
-          const oneUser = response.data;
-          // console.log(oneUser);
-          setUser(oneUser);
-          setLoading(false);
-        })
-        .catch((error) => console.log(error));
-    };
-
-    getUser();
-    console.log(loggedUser);
+    axios
+      .get(`${API_URL}/user/${userId}`)
+      .then((response) => {
+        const oneUser = response.data;
+        setUser(oneUser);
+        setLoading(false);
+      })
+      .catch((error) => console.log(error));
+    axios
+      .get(`${API_URL}/lodging/host/${userId}`)
+      .then((response) => {
+        setUserLodgings(response.data);
+        setLoading(false);
+      })
+      .catch((error) => console.log(error));
   }, [userId]);
 
   if (loading) return <div>Loading...</div>;
@@ -77,12 +79,23 @@ function UserProfile() {
               <p>
                 <strong>Lodgings by this user:</strong> {user.lodgings?.title}
                 {/* do everything i did for activities for the lodging */}
+                {userLodgings.map((lodging) => (
+                  <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
+                    <div key={lodging._id}>
+                      <p>{lodging.title}</p>
+                      <p>{lodging.thumbnail}</p>
+                    </div>
+                  </Link>
+                ))}
               </p>
               <p>
                 <strong>Activities by this user:</strong>{" "}
                 <div>
                   {user.activities?.map((activity) => (
-                    <Link to={`/activity-list/${activity._id}`}>
+                    <Link
+                      key={activity._id}
+                      to={`/activity-list/${activity._id}`}
+                    >
                       <div key={activity._id}>
                         <p>{activity.title}</p>
                         <p>{activity.thumbnail}</p>
