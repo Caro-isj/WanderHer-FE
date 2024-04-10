@@ -17,6 +17,7 @@ import ActivitiesList from "./pages/ActivitiesList";
 import ActivitiesDetails from "./pages/ActivitiesDetails";
 import ActivityForm from "./components/ActivityForm";
 import { EditActivity } from "./components/EditActivity";
+import GirlPowerPlaylist from "./pages/GirlPowerPlaylist";
 
 function App() {
   return (
@@ -111,6 +112,14 @@ function App() {
           element={
             <IsProtected>
               <UserProfile />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="girl-boss-playlist"
+          element={
+            <IsProtected>
+              <GirlPowerPlaylist />
             </IsProtected>
           }
         />
