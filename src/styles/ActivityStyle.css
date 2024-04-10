@@ -29,7 +29,7 @@ img {
 }
 
 .activity-card {
-  background-color: rgba(250, 235, 215, 0.258);
+  background-color: white;
   color: rgba(97, 55, 86, 255);
   display: flex;
   padding: 0.5%;
