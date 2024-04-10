@@ -21,7 +21,7 @@ export default function NavigationBar() {
   return (
     <div className="navigation-bar">
       <button onClick={() => nav("/dashboard")}>Dashboard</button>
-      <button onClick={() => nav(`/user/${user._id}`)}>Profile</button>
+      <button onClick={() => nav(`/user/${user?._id}`)}>Profile</button>
       <button onClick={() => nav("/lodging-list")}>Accomodations</button>
       <button onClick={() => nav("/activity-list")}>Activities</button>
       <button>Alert!</button>
