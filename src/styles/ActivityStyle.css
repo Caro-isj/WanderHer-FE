@@ -34,6 +34,10 @@ img {
   padding: 2%;
 }
 
+.activity-card:hover {
+  transform: translateY(-5px);
+}
+
 .activity-content {
   width: 100%;
   display: flex;
