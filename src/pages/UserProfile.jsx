@@ -34,9 +34,6 @@ function UserProfile() {
 
   if (loading) return <div>Loading...</div>;
 
-  // console.log("this is the user", user);
-
-  console.log(user.activities);
   return (
     <div>
       <div>
@@ -77,13 +74,13 @@ function UserProfile() {
                 <strong>Phone:</strong> {user.phoneNumber}
               </p>
               <p>
-                <strong>Lodgings by this user:</strong> {user.lodgings?.title}
+                <strong>Lodgings by this user:</strong>
                 {/* do everything i did for activities for the lodging */}
                 {userLodgings.map((lodging) => (
                   <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
                     <div key={lodging._id}>
                       <p>{lodging.title}</p>
-                      <p>{lodging.thumbnail}</p>
+                      <img src={lodging.thumbnail} alt="" />
                     </div>
                   </Link>
                 ))}
@@ -98,7 +95,7 @@ function UserProfile() {
                     >
                       <div>
                         <p>{activity.title}</p>
-                        <p>{activity.thumbnail}</p>
+                        <img src={activity.thumbnail} alt="" />
                       </div>
                     </Link>
                   ))}
