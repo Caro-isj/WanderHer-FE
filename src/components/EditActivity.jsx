@@ -199,17 +199,7 @@ export const EditActivity = () => {
             step="0.00000001"
           />
         </label>
-        <p>
-          <a
-            href="https://www.latlong.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discover your house's precise coordinates with ease! Simply click
-            here 📍
-          </a>
-          .
-        </p>
+
         <button>Submit</button>
       </form>
     </div>
