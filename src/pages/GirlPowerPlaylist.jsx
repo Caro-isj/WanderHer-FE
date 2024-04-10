@@ -1,6 +1,7 @@
 import React from "react";
 import FunFactGenerator from "../components/FunFactGenerator";
 import "../styles/GirlPowerPlaylistStyle.css";
+import InspiringWoman from "../components/InspiringWoman";
 
 export default function GirlPowerPlaylist() {
   return (
@@ -22,6 +23,7 @@ export default function GirlPowerPlaylist() {
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
+      <InspiringWoman />
     </div>
   );
 }
