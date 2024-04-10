@@ -17,7 +17,7 @@ function UserProfile() {
         .get(`${API_URL}/user/${userId}`)
         .then((response) => {
           const oneUser = response.data;
-          console.log(oneUser);
+          // console.log(oneUser);
           setUser(oneUser);
           setLoading(false);
         })
@@ -28,6 +28,8 @@ function UserProfile() {
   }, [userId]);
 
   if (loading) return <div>Loading...</div>;
+
+  // console.log("this is the user", user);
 
   return (
     <div>
@@ -60,12 +62,15 @@ function UserProfile() {
               <p>
                 <strong>Phone:</strong> {user.phoneNumber}
               </p>
-              {/* <p>
-                <strong>Activities by this user:</strong> {user.lodgings?.title}
+              <p>
+                <strong>Lodgings by this user:</strong> {user.lodgings?.title}
+                {/* do everything i did for activitues for the lodging */}
               </p>
               <p>
-                <strong>Lodgings by this user:</strong> {user.activities?.title}
-              </p> */}
+                <strong>Activities by this user:</strong>{" "}
+                {user.activities?.title}
+                {/* map over the array of activities and show */}
+              </p>
             </div>
             <div>
               <Link to={`/user/${user._id}/edit`}>
