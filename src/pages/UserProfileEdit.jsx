@@ -9,7 +9,7 @@ const DEFAULT_USER_FORM_VALUES = {
   firstName: "",
   lastName: "",
   email: "",
-  phoneNumber: "",
+  phoneNumber: 0,
   profilePicture: "",
   aboutMe: "",
   location: "",
@@ -31,17 +31,13 @@ function UserProfileEdit() {
     const formData = new FormData();
     const image = e.target.profilePicture.files[0];
 
-    formData.append("userName", user.userName);
-    formData.append("firstName", user.firstName);
-    formData.append("lastName", user.lastName);
-    formData.append("email", user.email);
-    formData.append("phoneNumber", user.phoneNumber);
+    for (const userProperty in user) {
+      if (user[userProperty]) {
+        formData.append(userProperty, user[userProperty]);
+      }
+    }
+   
     formData.append("profilePicture", image);
-    formData.append("aboutMe", user.aboutMe);
-    formData.append("location", user.location);
-    formData.append("age", user.age);
-    formData.append("occupation", user.occupation);
-    formData.append("languages", user.languages);
 
     setLoading(true);
     // console.log(formData);
@@ -317,7 +313,7 @@ function UserProfileEdit() {
           </label>
         </div>
 
-        <button disabled={loading} type="submit" onClick={() => handleSubmit()}>
+        <button disabled={loading} type="submit">
           Save
         </button>
         <button disabled={loading} type="button" onClick={() => handleDelete()}>
