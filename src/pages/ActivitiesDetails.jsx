@@ -106,7 +106,7 @@ export default function ActivitiesDetails() {
         </>
       );
     } else {
-      console.log("you're the host of this activity");
+      // console.log("you're the host of this activity");
       return null;
     }
   };
@@ -151,8 +151,8 @@ export default function ActivitiesDetails() {
   }));
   const renderedReviews = reviewsWithRatings.map((rev) => (
     <>
-      <h2>{rev.title}</h2>
       <p>{rev.comment}</p>
+      <h2>{rev.title}</h2>
       <p>{rev.stars}</p>
     </>
   ));
@@ -235,7 +235,7 @@ export default function ActivitiesDetails() {
             </form>
           )}
         </div>
-        <div>{renderedReviews}</div>
+        <div className="activity-reviews">{renderedReviews}</div>
       </div>
     </div>
   );

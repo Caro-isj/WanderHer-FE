@@ -29,9 +29,19 @@ img {
 }
 
 .activity-card {
+  background-color: white;
   color: rgba(97, 55, 86, 255);
   display: flex;
-  padding: 2%;
+  padding: 0.5%;
+  margin: 2%;
+  border: 1px solid rgba(183, 136, 174, 255); /* Soft purple borders */
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
 }
 
 .activity-content {
@@ -88,6 +98,12 @@ img {
 
 .activity-form {
   margin: 0 30%;
+}
+
+.activity-reviews {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 
 /******************Activity FORM styles*****************/
