@@ -58,12 +58,14 @@ function UserProfileEdit() {
   };
 
   const handleDelete = () => {
-    axios
-      .delete(`${API_URL}/user/${userId}`)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => console.log(error));
+    if (confirm("Are you sure ?")) {
+      axios
+        .delete(`${API_URL}/user/${userId}`)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   const handleChange = (e) => {
