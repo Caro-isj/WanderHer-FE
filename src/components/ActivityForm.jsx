@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useContext, AuthContext } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -175,17 +176,7 @@ export const ActivityForm = () => {
             step="0.00000001"
           />
         </label>
-        <p>
-          <a
-            href="https://www.latlong.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discover your house's precise coordinates with ease! Simply click
-            here 📍
-          </a>
-          .
-        </p>
+
         <button>Submit</button>
       </form>
     </div>

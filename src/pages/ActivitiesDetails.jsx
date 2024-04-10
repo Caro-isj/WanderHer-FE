@@ -78,7 +78,7 @@ export default function ActivitiesDetails() {
 
   //show the update and delete buttons only if you're the host of the activity.
   const update = () => {
-    if (activity.host?._id === user._id) {
+    if (activity.host?._id === user?._id) {
       return (
         <>
           <Link to={`/activity-list/${activityId}/edit`}>
