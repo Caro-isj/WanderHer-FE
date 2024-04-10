@@ -90,6 +90,12 @@ img {
   margin: 0 30%;
 }
 
+.activity-reviews {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
 /******************Activity FORM styles*****************/
 .activity-form-descr {
   width: 100%;
