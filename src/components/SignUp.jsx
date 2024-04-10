@@ -19,7 +19,7 @@ export default function SignUp() {
     axios
       .post(`${API_URL}/auth/signup`, userToCreate)
       .then((response) => {
-        console.log("you created a user", response.data);
+        // console.log("you created a user", response.data);
         nav("/login");
       })
       .catch((err) => {
