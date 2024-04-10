@@ -31,6 +31,7 @@ function UserProfile() {
 
   // console.log("this is the user", user);
 
+  console.log(user.activities);
   return (
     <div>
       <div>
@@ -55,7 +56,15 @@ function UserProfile() {
               </p>
               <p>{user.location}</p>
               <p>{user.aboutMe}</p>
-              <p>{user.languages}</p>
+              <p>
+                {user.languages.map((language, index) => {
+                  if (index === user.languages.length - 1) {
+                    return language + " ";
+                  } else {
+                    return language + ", ";
+                  }
+                })}
+              </p>
               <p>
                 <strong>Email:</strong> {user.email}
               </p>
@@ -64,15 +73,24 @@ function UserProfile() {
               </p>
               <p>
                 <strong>Lodgings by this user:</strong> {user.lodgings?.title}
-                {/* do everything i did for activitues for the lodging */}
+                {/* do everything i did for activities for the lodging */}
               </p>
               <p>
                 <strong>Activities by this user:</strong>{" "}
-                {user.activities?.title}
-                {/* map over the array of activities and show */}
+                <div>
+                  {user.activities?.map((activity) => (
+                    <Link to={`/activity-list/${activity._id}`}>
+                      <div key={activity._id}>
+                        <p>{activity.title}</p>
+                        <p>{activity.thumbnail}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </p>
             </div>
             <div>
+              {/* compare user id of profile with user that's logged in */}
               <Link to={`/user/${user._id}/edit`}>
                 <button>Edit</button>
               </Link>
