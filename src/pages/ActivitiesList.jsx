@@ -27,7 +27,7 @@ export default function ActivitiesList() {
   }
 
   return (
-    <div>
+    <div className="activity-block">
       <div className="activity-list">
         <h1>Activity List</h1>
         <Link to="/activity-form">
@@ -37,11 +37,13 @@ export default function ActivitiesList() {
           activities.map((oneAct) => {
             return (
               <Link key={oneAct._id} to={`/activity-list/${oneAct._id}`}>
-                <div>
+                <div className="activity-card">
                   <img src={oneAct.thumbnail} alt={oneAct.title} />
-                  <h2>{oneAct.title}</h2>
-                  <h4>{oneAct.location}</h4>
-                  <p>{oneAct.price}€ p.p</p>
+                  <div className="activity-content">
+                    <h2>{oneAct.title}</h2>
+                    <h4>{oneAct.location}</h4>
+                    <p>{oneAct.price}€ p.p</p>
+                  </div>
                 </div>
               </Link>
             );

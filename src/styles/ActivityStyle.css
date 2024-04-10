@@ -1,3 +1,107 @@
-.activity-details {
+button {
+  background-color: rgba(158, 242, 197);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  color: rgba(97, 55, 86);
+}
+/****************Activity LIST styles*****************/
+.activity-block {
+  display: flex;
+  justify-content: center;
   padding-bottom: 60px;
+}
+
+.activity-list {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 45%;
+  border-radius: 2%;
+  padding-right: 0.5em;
+}
+
+.activity-card {
+  color: rgba(97, 55, 86, 255);
+  display: flex;
+  padding: 2%;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+}
+
+.activity-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-content h2 {
+  font-family: Mountains;
+  font-size: 2em;
+}
+
+.activity-content p {
+  border: 1px, solid, black;
+}
+/******************Activity DETAILS styles***************/
+.activity-details {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.activity-details img {
+  width: 800px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.activity-details-content {
+  width: 90%;
+}
+
+.activity-details-content p {
+  margin: 2% 5%;
+  text-align: justify;
+  font-size: 1.4em;
+  line-height: 125%;
+}
+
+.activity-meetingpoint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2%;
+}
+
+.activity-meetingpoint h2 {
+  margin: 2%;
+}
+
+.activity-form {
+  margin: 0 30%;
+}
+
+.activity-reviews {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+/******************Activity FORM styles*****************/
+.activity-form-descr {
+  width: 100%;
+  height: 100px;
 }
