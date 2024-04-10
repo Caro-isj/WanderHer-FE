@@ -59,7 +59,7 @@ function UserProfile() {
               </p>
               <p>{user.location}</p>
               <p>{user.aboutMe}</p>
-              <p>{user.languages}</p>
+              <p>{`${user.languages} `}</p>
               <p>
                 <strong>Email:</strong> {user.email}
               </p>
