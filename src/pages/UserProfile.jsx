@@ -1,9 +1,3 @@
-// import React from "react";
-
-// export default function UserProfile() {
-//   return <div>UserProfile</div>;
-// }
-
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
