@@ -98,8 +98,22 @@ function App() {
           }
         />
         <Route path="*" element={<h1> 404 Not found</h1>} />
-        <Route path="/user/:userId/edit" element={<UserProfileEdit />} />
-        <Route path="/user/:userId" element={<UserProfile />} />
+        <Route
+          path="/user/:userId/edit"
+          element={
+            <IsProtected>
+              <UserProfileEdit />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="/user/:userId"
+          element={
+            <IsProtected>
+              <UserProfile />
+            </IsProtected>
+          }
+        />
       </Routes>
       <NavigationBar />
     </>

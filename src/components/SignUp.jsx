@@ -20,7 +20,7 @@ export default function SignUp() {
       .post(`${API_URL}/auth/signup`, userToCreate)
       .then((response) => {
         console.log("you created a user", response.data);
-        nav("/activity-list");
+        nav("/login");
       })
       .catch((err) => {
         console.log("there was an error signing up", err.response.data.message);
