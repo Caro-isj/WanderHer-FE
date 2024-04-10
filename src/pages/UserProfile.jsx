@@ -73,14 +73,23 @@ function UserProfile() {
               </p>
               <p>
                 <strong>Lodgings by this user:</strong> {user.lodgings?.title}
-                {/* do everything i did for activities for the lodging */}
+                {/* {user.lodgings?.map((lodging) => (
+                    <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
+                      <div>
+                        <p>{lodging.title}</p>
+                      </div>
+                    </Link>
+                  ))} */}
               </p>
               <p>
                 <strong>Activities by this user:</strong>{" "}
                 <div>
                   {user.activities?.map((activity) => (
-                    <Link to={`/activity-list/${activity._id}`}>
-                      <div key={activity._id}>
+                    <Link
+                      key={activity._id}
+                      to={`/activity-list/${activity._id}`}
+                    >
+                      <div>
                         <p>{activity.title}</p>
                         <p>{activity.thumbnail}</p>
                       </div>
