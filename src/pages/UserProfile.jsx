@@ -96,7 +96,7 @@ function UserProfile() {
                       key={activity._id}
                       to={`/activity-list/${activity._id}`}
                     >
-                      <div key={activity._id}>
+                      <div>
                         <p>{activity.title}</p>
                         <p>{activity.thumbnail}</p>
                       </div>
