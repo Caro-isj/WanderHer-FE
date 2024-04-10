@@ -3,7 +3,6 @@ import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
 import { useParams, useNavigate } from "react-router-dom";
 
-
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 function CreateLodging() {
@@ -71,12 +70,32 @@ function CreateLodging() {
       })
       .then((response) => {
         console.log("Lodging created:", response.data);
+        // setUser(response.data.updatedUser);
         navigate("/lodging-list");
       })
       .catch((error) => {
         console.error("Error creating lodging:", error);
       });
   };
+
+  // axios
+  // .post(`${API_URL}/activity`, activityToCreate, {
+  //   headers: {
+  //     authorization: `Bearer ${theToken}`,
+  //   },
+  // })
+  // .then((res) => {
+  //   console.log("you created an activity", res.data);
+  //   setUser(res.data.updatedUser);
+  //   nav("/activity-list");
+  // })
+  // .catch((err) => {
+  //   console.log(
+  //     "there was an error creating activity",
+  //     err.response.data.message
+  //   );
+  //   setError(err.response.data.message);
+  // });
 
   return (
     <form onSubmit={handleSubmit}>
