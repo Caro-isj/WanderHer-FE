@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import placeholderImage from "../assets/profilepic.png";
+import { AuthContext } from "../contexts/AuthContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 function UserProfile() {
+  const { user: loggedUser } = useContext(AuthContext);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +27,7 @@ function UserProfile() {
     };
 
     getUser();
+    console.log(loggedUser);
   }, [userId]);
 
   if (loading) return <div>Loading...</div>;
@@ -91,9 +94,11 @@ function UserProfile() {
             </div>
             <div>
               {/* compare user id of profile with user that's logged in */}
-              <Link to={`/user/${user._id}/edit`}>
-                <button>Edit</button>
-              </Link>
+              {loggedUser._id == userId && (
+                <Link to={`/user/${user._id}/edit`}>
+                  <button>Edit</button>
+                </Link>
+              )}
             </div>
           </>
         )}
