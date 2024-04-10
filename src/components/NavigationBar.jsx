@@ -11,7 +11,7 @@ export default function NavigationBar() {
   const nav = useNavigate();
   const { user } = useContext(AuthContext);
 
-  console.log(user);
+  // console.log(user);
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");

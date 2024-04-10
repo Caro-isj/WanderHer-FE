@@ -269,7 +269,7 @@ function UserProfileEdit() {
       if (checked) {
         return {
           ...prevUser,
-          languages: [],
+          // languages: [],
           languages: [...prevUser.languages, value],
         };
       } else {
@@ -296,7 +296,7 @@ function UserProfileEdit() {
     getUser();
   }, []);
 
-  console.log(user.languages);
+  // console.log(user.languages);
 
   return (
     <div>
