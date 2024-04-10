@@ -8,6 +8,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { AuthContext } from "../contexts/AuthContext";
+import "../styles/ActivityStyle.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -20,7 +21,7 @@ export default function ActivitiesDetails() {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState("");
   const [showAddReview, setShowAddReview] = useState(false);
   const [reviews, setReviews] = useState([]);
   const { isLoaded } = useJsApiLoader({
@@ -158,77 +159,84 @@ export default function ActivitiesDetails() {
 
   return (
     <div className="activity-details">
-      <img src={activity.images} alt={activity.title} />
-      <h1>{activity.title}</h1>
-      <h2>
-        {activity.location} - max capacity : {activity.capacity} pers.
-      </h2>
+      <div className="activity-details-content">
+        <img src={activity.images} alt={activity.title} />
+        <h1>{activity.title}</h1>
+        <h2>
+          {activity.location} - max capacity : {activity.capacity} pers.
+        </h2>
 
-      <p>{activity.price}€ per persons.</p>
-      <p>{activity.description}</p>
-      {/* <p>
+        <h3>{activity.price}€ per persons.</h3>
+        <p>{activity.description}</p>
+        {/* <p>
         Start : {activity.startTime} - End : {activity.endTime}
       </p> */}
 
-      <h3>Hosted by : {activity.host?.userName}</h3>
-
-      <h4>Meet here : {activity.meetingPoint}</h4>
-      <div className="map-container">
-        {isLoaded && activityCoordinates && (
-          <>
-            <GoogleMap
-              mapContainerClassName="maps-embeded"
-              center={activityCoordinates}
-              zoom={15}
-            >
-              <Marker
-                position={activityCoordinates}
-                onClick={() => setSelectedMarker(activityCoordinates)}
-              />
-            </GoogleMap>
-          </>
-        )}
+        <h3>
+          Hosted by : <em>{activity.host?.userName}</em>
+        </h3>
+        <div className="activity-meetingpoint">
+          <h2>Meet here : {activity.meetingPoint}</h2>
+          <div className="map-container">
+            {isLoaded && activityCoordinates && (
+              <>
+                <GoogleMap
+                  mapContainerClassName="maps-embeded"
+                  center={activityCoordinates}
+                  zoom={15}
+                >
+                  <Marker
+                    position={activityCoordinates}
+                    onClick={() => setSelectedMarker(activityCoordinates)}
+                  />
+                </GoogleMap>
+              </>
+            )}
+          </div>
+        </div>
+        {update()}
+        {bookNow()}
+        <button onClick={showCreateReview}>Add Review</button>
+        <div className="activity-form">
+          {showAddReview && (
+            <form onSubmit={addReview}>
+              <label>
+                Title :
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                />
+              </label>
+              <label>
+                Review :
+                <input
+                  type="text"
+                  value={comment}
+                  onChange={(e) => {
+                    setComment(e.target.value);
+                  }}
+                />
+              </label>
+              <label>
+                Rating :
+                <input
+                  type="text"
+                  value={rating}
+                  placeholder="your rating out of 5"
+                  onChange={(e) => {
+                    setRating(e.target.value);
+                  }}
+                />
+              </label>
+              <button>Submit</button>
+            </form>
+          )}
+        </div>
+        <div>{renderedReviews}</div>
       </div>
-      {update()}
-      {bookNow()}
-      <button onClick={showCreateReview}>Add Review</button>
-      {showAddReview && (
-        <form onSubmit={addReview}>
-          <label>
-            Title :
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Review :
-            <input
-              type="text"
-              value={comment}
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Rating :
-            <input
-              type="text"
-              value={rating}
-              onChange={(e) => {
-                setRating(e.target.value);
-              }}
-            />
-          </label>
-          <button>Submit</button>
-        </form>
-      )}
-
-      <div>{renderedReviews}</div>
     </div>
   );
 }

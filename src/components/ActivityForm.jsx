@@ -89,7 +89,10 @@ export const ActivityForm = () => {
         <label>
           Description :
           <textarea
+            className="activity-form-descr"
             type="text"
+            // cols={"100"}
+            // rows={"10"}
             value={description}
             onChange={(e) => {
               setDescription(e.target.value);
