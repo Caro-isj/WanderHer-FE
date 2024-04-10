@@ -9,7 +9,7 @@ const DEFAULT_USER_FORM_VALUES = {
   firstName: "",
   lastName: "",
   email: "",
-  phoneNumber: 0,
+  phoneNumber: "",
   profilePicture: "",
   aboutMe: "",
   location: "",
@@ -21,7 +21,7 @@ const DEFAULT_USER_FORM_VALUES = {
 function UserProfileEdit() {
   const [user, setUser] = useState({ ...DEFAULT_USER_FORM_VALUES });
   const [loading, setLoading] = useState(true);
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false); //DELETE
+
   const { userId } = useParams();
   const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ function UserProfileEdit() {
     formData.append("languages", user.languages);
 
     setLoading(true);
-    console.log(formData);
+    // console.log(formData);
     axios
       .put(`${API_URL}/user/${userId}`, formData, {
         headers: {
@@ -57,15 +57,14 @@ function UserProfileEdit() {
       .catch((error) => console.log(error));
   };
 
-  // const handleDelete = () => {
-  //DELETE
-  //   axios
-  //     .delete(`${API_URL}/user/${user.id}`)
-  //     .then(() => {
-  //       navigate("/");
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+  const handleDelete = () => {
+    axios
+      .delete(`${API_URL}/user/${userId}`)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -112,23 +111,6 @@ function UserProfileEdit() {
   return (
     <div>
       <h3>Edit User</h3>
-
-      {/* {showDeleteConfirmation && (                                                        //DELETE
-        <div>
-          <div></div>
-
-          <div>
-            <p>Are you sure you want to delete this student?</p>
-
-            <div>
-              <button onClick={handleDelete}>Yes</button>
-              <button onClick={() => setShowDeleteConfirmation(false)}>
-                No
-              </button>
-            </div>
-          </div>
-        </div>
-      )} */}
 
       <form onSubmit={handleSubmit}>
         <label>User Name:</label>
@@ -333,13 +315,12 @@ function UserProfileEdit() {
           </label>
         </div>
 
-        <button disabled={loading} type="submit">
+        <button disabled={loading} type="submit" onClick={() => handleSubmit()}>
           Save
         </button>
-
-        {/* <button disabled={loading} type="button" onClick={() => handleDelete()}>
+        <button disabled={loading} type="button" onClick={() => handleDelete()}>
           Delete
-        </button> */}
+        </button>
       </form>
     </div>
   );
