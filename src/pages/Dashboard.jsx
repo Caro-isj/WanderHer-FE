@@ -1,7 +1,7 @@
-import { AuthContext } from "../contexts/AuthContext";
 import axios from "axios";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import BusinessOwned from "../components/BusinessOwned";
+import { Link } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -66,29 +66,34 @@ export default function Dashboard() {
       <div className="lodgings">
         <h2>Random Lodgings</h2>
         {getRandomItems(lodgings, selectedLocation).map((lodging, index) => (
-          <div key={index}>
-            <img
-              src={lodging.images}
-              alt={lodging.title}
-              style={{ width: "10%", height: "auto" }}
-            />
-            <p>{lodging.title}</p>
-          </div>
+          <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
+            <div>
+              <img
+                src={lodging.images}
+                alt={lodging.title}
+                style={{ width: "10%", height: "auto" }}
+              />
+              <p>{lodging.title}</p>
+            </div>
+          </Link>
         ))}
       </div>
       <div className="activities">
         <h2>Random Activities</h2>
         {getRandomItems(activities, selectedLocation).map((activity, index) => (
-          <div key={index}>
-            <img
-              src={activity.thumbnail}
-              alt={activity.title}
-              style={{ width: "10%", height: "auto" }}
-            />
-            <p>{activity.title}</p>
-          </div>
+          <Link key={activity._id} to={`/activity-list/${activity._id}`}>
+            <div>
+              <img
+                src={activity.thumbnail}
+                alt={activity.title}
+                style={{ width: "10%", height: "auto" }}
+              />
+              <p>{activity.title}</p>
+            </div>
+          </Link>
         ))}
       </div>
+
       <BusinessOwned />
     </>
   );

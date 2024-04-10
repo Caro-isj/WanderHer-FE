@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { useContext, AuthContext } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -20,6 +21,7 @@ export const ActivityForm = () => {
   const [longitude, setLongitude] = useState(0);
   const theToken = localStorage.getItem("authToken");
   const nav = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,8 +45,9 @@ export const ActivityForm = () => {
           authorization: `Bearer ${theToken}`,
         },
       })
-      .then((createAct) => {
-        console.log("you created an activity", createAct.data);
+      .then((res) => {
+        console.log("you created an activity", res.data);
+        setUser(res.data.updatedUser);
         nav("/activity-list");
       })
       .catch((err) => {
