@@ -212,7 +212,7 @@ rating - Number // enum 1 to 5
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/Caro-isj/WanderHer-FE)
+[Client repository Link](https://github.com/Caro-isj/WanderHer-FE) <br>
 [Server repository Link](https://github.com/Caro-isj/WanderHer-BE)
 
 [Deploy Link](https://wanderher.netlify.app)
