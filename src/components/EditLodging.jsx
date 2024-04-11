@@ -17,8 +17,7 @@ function EditLodging() {
     latitude: null,
     longitude: null,
   });
-  const { lodgingId } = useParams(); // Assuming you're using React Router and have a route like "/edit-lodging/:lodgingId"
-  const navigate = useNavigate();
+  const { lodgingId } = useParams();
 
   useEffect(() => {
     if (lodgingId) {
@@ -78,12 +77,12 @@ function EditLodging() {
       .put(`${API_URL}/lodging/${lodgingId}`, myFormData)
       .then((response) => {
         console.log("Lodging updated:", response.data);
-        navigate(`/lodging/${lodgingId}`); // Redirect to the lodging list or detail page after update
+        navigate(`/lodging/${lodgingId}`);
       })
       .catch((error) => console.error("Error updating lodging:", error));
   };
 
-  // Render form (similar to CreateLodging) with lodgingData populated
+
   return (
     <form onSubmit={handleSubmit}>
       <label>

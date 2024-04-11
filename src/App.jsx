@@ -18,6 +18,7 @@ import ActivitiesDetails from "./pages/ActivitiesDetails";
 import ActivityForm from "./components/ActivityForm";
 import { EditActivity } from "./components/EditActivity";
 import GirlPowerPlaylist from "./pages/GirlPowerPlaylist";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -120,6 +121,14 @@ function App() {
           element={
             <IsProtected>
               <GirlPowerPlaylist />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="about-us"
+          element={
+            <IsProtected>
+              <AboutUs />
             </IsProtected>
           }
         />

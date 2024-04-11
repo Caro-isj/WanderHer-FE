@@ -57,58 +57,62 @@ export default function LodgingList() {
     new Set(lodging.map((item) => item.location))
   ).sort();
   return (
-    <div>
-      <h1>Lodging List</h1>
+    <div className="lodging-list-container">
+      <h1 className="lodging-list-title">Our Lodgings</h1>
       <Link to="/create-lodging">
-        <button className="button-add">Add Your Accomodation</button>
+        <button className="button-add">Add Your Lodging</button>
       </Link>
-      <div>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <select
-          onChange={(e) => setFilterLocation(e.target.value)}
-          value={filterLocation}
-        >
-          <option value="">Select City</option>
-          {uniquLocations.map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
+      <div className="lodging-list-input-container">
+        <div className="lodging-list-inputs-row">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <select
+            onChange={(e) => setFilterLocation(e.target.value)}
+            value={filterLocation}
+          >
+            <option value="">Select City</option>
+            {uniquLocations.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
+          <select
+            onChange={(e) => setFilterType(e.target.value)}
+            value={filterType}
+          >
+            <option value="">Select Type</option>
+            <option value="couch">Couch</option>
+            <option value="full bedroom">Full Bedroom</option>
+            <option value="bed in shared bedroom">Bed in Shared Bedroom</option>
+          </select>
+        </div>
+        <div className="lodging-list-checkboxes">
+          {availableAmenities.map((amenity) => (
+            <label key={amenity}>
+              <input
+                type="checkbox"
+                value={amenity}
+                onChange={handleAmenitiesChange}
+                checked={filterAmenities.includes(amenity)}
+              />
+              {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+            </label>
           ))}
-        </select>
-        <select
-          onChange={(e) => setFilterType(e.target.value)}
-          value={filterType}
-        >
-          <option value="">Select Type</option>
-          <option value="couch">Couch</option>
-          <option value="full bedroom">Full Bedroom</option>
-          <option value="bed in shared bedroom">Bed in Shared Bedroom</option>
-        </select>
-        {availableAmenities.map((amenity) => (
-          <label key={amenity}>
-            <input
-              type="checkbox"
-              value={amenity}
-              onChange={handleAmenitiesChange}
-              checked={filterAmenities.includes(amenity)}
-            />
-            {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
-          </label>
-        ))}
+        </div>
       </div>
-      <div className="lodging-list-container">
+      <div className="lodging-list-lodgings">
         {filteredLodgings.length > 0 ? (
           filteredLodgings.map((lodging) => <div key={lodging._id}></div>)
         ) : (
           <p>No lodgings found.</p>
         )}
       </div>
-      <div>
+      <div className="lodging-list-lodgings">
         {filteredLodgings.length > 0 ? (
           filteredLodgings.map((lodging) => (
             <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
@@ -116,7 +120,7 @@ export default function LodgingList() {
                 <img
                   src={lodging.images} // Make sure this is a valid URL
                   alt={lodging.title}
-                  style={{ width: "100%", height: "auto" }}
+                  style={{ width: "75%", height: "auto" }}
                 />
                 <div className="lodging-details">
                   <h2>{lodging.title}</h2>
