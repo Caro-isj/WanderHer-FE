@@ -26,8 +26,9 @@
 .services-container {
   padding: 0;
   margin: 0 0 60px 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-areas: "title title title title title" "img img img img img";
   justify-content: center;
   font-size: 12px;
   gap: 2rem;
@@ -60,6 +61,11 @@
   object-fit: cover;
   height: 100%;
   width: 100%;
+  grid-area: img;
+}
+
+.services-container h2 {
+  grid-area: title;
 }
 
 .services:hover {

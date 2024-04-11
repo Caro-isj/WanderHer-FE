@@ -56,7 +56,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <div className="dash-intro">
-        <img src="src\assets\logotest1.png" />
+        <img src="src/assets/logotest1.png" />
         <h6>
           Be part of our global fellowship of female travelers and find your
           next homestay.

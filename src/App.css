@@ -27,6 +27,8 @@ body {
   color: rgba(97, 55, 86, 255);
   font-family: CenturyG;
   background-image: url("./assets/6543832.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: 100%;
   padding-bottom: 60px;
   position: relative;
