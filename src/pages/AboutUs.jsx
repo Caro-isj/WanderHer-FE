@@ -16,11 +16,11 @@ const Title = styled.h1`
 `;
 
 const Highlight = styled.span`
-  background-color: #ffeadb; 
-  color: #e76f51; 
-  padding: 0 4px; 
-  border-radius: 4px; 
-  font-weight: bold; 
+  background-color: #ffeadb;
+  color: #e76f51;
+  padding: 0 4px;
+  border-radius: 4px;
+  font-weight: bold;
 `;
 
 const Subtitle = styled.h3`
@@ -34,14 +34,25 @@ const SectionTitle = styled.h2`
 `;
 
 const Image = styled.img`
-  width: 250px; 
-  height: 250px; 
+  width: 250px;
+  height: 250px;
   margin: 20px;
-  border-radius: 50%; 
+  border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  object-fit: cover; 
+  object-fit: cover;
+  cursor: pointer; /* Indicates the image can be clicked */
+  transition: transform 0.3s ease; /* Smooth transition for transformation */
+
+  &:hover {
+    transform: scale(1.05); /* Scales up the image slightly on hover */
+  }
 `;
 
+
+const StyledLink = styled.a`
+  text-decoration: none;
+  color: inherit; /* Keeps the text color the same as its surroundings */
+`;
 
 export default function AboutUs() {
   return (
@@ -74,9 +85,27 @@ export default function AboutUs() {
       </Subtitle>
       <br />
       <SectionTitle>The Faces Behind WanderHer</SectionTitle>
-      <Image src={alexandrapic} alt="Alexandra" />
-      <Image src={caropic} alt="Caro" />
-      <Image src={marianapic} alt="Mariana" />
+      <StyledLink
+        href="https://github.com/MimiBsn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image src={alexandrapic} alt="Alexandra" />
+      </StyledLink>
+      <StyledLink
+        href="https://github.com/Caro-isj"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image src={caropic} alt="Caro" />
+      </StyledLink>
+      <StyledLink
+        href="https://github.com/marianaGOD"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image src={marianapic} alt="Mariana" />
+      </StyledLink>
     </AboutContainer>
   );
 }
