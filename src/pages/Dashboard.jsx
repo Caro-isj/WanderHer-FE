@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BusinessOwned from "../components/BusinessOwned";
 import { Link } from "react-router-dom";
+import "../styles/DashboardStyles.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -9,7 +10,7 @@ export default function Dashboard() {
   const [lodgings, setLodgings] = useState([]);
   const [activities, setActivities] = useState([]);
   const [locations, setLocations] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState(""); 
+  const [selectedLocation, setSelectedLocation] = useState("");
 
   useEffect(() => {
     axios
@@ -53,7 +54,7 @@ export default function Dashboard() {
   };
 
   return (
-    <>
+    <div className="chucha">
       <p>Feeling lucky in...</p>
       <select onChange={handleLocationChange}>
         <option value="">Select a location</option>
@@ -95,6 +96,6 @@ export default function Dashboard() {
       </div>
 
       <BusinessOwned />
-    </>
+    </div>
   );
 }

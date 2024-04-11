@@ -70,32 +70,12 @@ function CreateLodging() {
       })
       .then((response) => {
         console.log("Lodging created:", response.data);
-        // setUser(response.data.updatedUser);
         navigate("/lodging-list");
       })
       .catch((error) => {
         console.error("Error creating lodging:", error);
       });
   };
-
-  // axios
-  // .post(`${API_URL}/activity`, activityToCreate, {
-  //   headers: {
-  //     authorization: `Bearer ${theToken}`,
-  //   },
-  // })
-  // .then((res) => {
-  //   console.log("you created an activity", res.data);
-  //   setUser(res.data.updatedUser);
-  //   nav("/activity-list");
-  // })
-  // .catch((err) => {
-  //   console.log(
-  //     "there was an error creating activity",
-  //     err.response.data.message
-  //   );
-  //   setError(err.response.data.message);
-  // });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -244,7 +224,7 @@ function CreateLodging() {
           rel="noopener noreferrer"
         >
           Discover your house's precise coordinates with ease! Simply click here
-          📍
+          :round_pushpin:
         </a>
         .
       </p>

@@ -15,7 +15,7 @@ export default function HomePage() {
     setView("login");
   };
   return (
-    <div home-page>
+    <div>
       <h1>WanderHer</h1>
       <h2>"Not all of those who wander are lost."</h2>
       <div className="log-and-sign-container">
