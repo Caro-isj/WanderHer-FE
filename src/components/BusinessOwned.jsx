@@ -11,8 +11,8 @@ export default function BusinessOwned() {
   return (
     <div className="business-owned-ad">
       <h2>Empower Your Choices: Support Women-Owned Businesses Today!</h2>
-      <div className="images-container">
-        <div className="business-container">
+      <div className="services-container">
+        <div className="services">
           <img src={business1} alt="Women-owned Business 1" />
           <button
             className="visit-website-button"
@@ -21,7 +21,7 @@ export default function BusinessOwned() {
             Visit Website
           </button>
         </div>
-        <div className="business-container">
+        <div className="services">
           <img src={business2} alt="Women-owned Business 2" />
           <button
             className="visit-website-button"
@@ -30,7 +30,7 @@ export default function BusinessOwned() {
             Visit Website
           </button>
         </div>
-        <div className="business-container">
+        <div className="services">
           <img src={business3} alt="Women-owned Business 3" />
           <button
             className="visit-website-button"

@@ -73,33 +73,37 @@ function UserProfile() {
               <p>
                 <strong>Phone:</strong> {user.phoneNumber}
               </p>
+
               <p>
-                <strong>Lodgings by this user:</strong>
-                {/* do everything i did for activities for the lodging */}
+                {userLodgings.length > 0 && (
+                  <strong>Lodgings by this user:</strong>
+                )}
                 {userLodgings.map((lodging) => (
                   <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
-                    <div key={lodging._id}>
+                    <div>
                       <p>{lodging.title}</p>
-                      <img src={lodging.thumbnail} alt="" />
+                      <img src={lodging.images} alt="" />
                     </div>
                   </Link>
                 ))}
               </p>
+
               <p>
-                <strong>Activities by this user:</strong>{" "}
-                <div>
-                  {user.activities?.map((activity) => (
-                    <Link
-                      key={activity._id}
-                      to={`/activity-list/${activity._id}`}
-                    >
-                      <div>
-                        <p>{activity.title}</p>
-                        <img src={activity.thumbnail} alt="" />
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                {user.activities.length > 0 && (
+                  <strong>Activities by this user:</strong>
+                )}
+
+                {user.activities.map((activity) => (
+                  <Link
+                    key={activity._id}
+                    to={`/activity-list/${activity._id}`}
+                  >
+                    <div>
+                      <p>{activity.title}</p>
+                      <img src={activity.images} alt="" />
+                    </div>
+                  </Link>
+                ))}
               </p>
             </div>
             <div>

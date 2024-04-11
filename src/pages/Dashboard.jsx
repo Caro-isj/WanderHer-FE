@@ -46,7 +46,7 @@ export default function Dashboard() {
       arr = arr.filter((item) => item.location === location);
     }
     let shuffled = arr.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 3);
+    return shuffled.slice(0, 5);
   };
 
   const handleLocationChange = (event) => {
@@ -54,8 +54,15 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="chucha">
-      <p>Feeling lucky in...</p>
+    <div className="dashboard">
+      <div className="dash-intro">
+        <img src="src\assets\logotest1.png" />
+        <h6>
+          Be part of our global fellowship of female travelers and find your
+          next homestay.
+        </h6>
+      </div>
+      <p>I'm feeling lucky in...</p>
       <select onChange={handleLocationChange}>
         <option value="">Select a location</option>
         {locations.map((location, index) => (
@@ -64,31 +71,29 @@ export default function Dashboard() {
           </option>
         ))}
       </select>
-      <div className="lodgings">
-        <h2>Random Lodgings</h2>
+
+      <div className="services-container">
+        {getRandomItems(lodgings, selectedLocation).length > 0 && (
+          <h2>Random Lodgings</h2>
+        )}
         {getRandomItems(lodgings, selectedLocation).map((lodging, index) => (
           <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
-            <div>
-              <img
-                src={lodging.images}
-                alt={lodging.title}
-                style={{ width: "10%", height: "auto" }}
-              />
+            <div className="services">
+              <img src={lodging.images} alt={lodging.title} />
               <p>{lodging.title}</p>
             </div>
           </Link>
         ))}
       </div>
-      <div className="activities">
-        <h2>Random Activities</h2>
+
+      <div className="services-container">
+        {getRandomItems(activities, selectedLocation).length > 0 && (
+          <h2>Random Activities</h2>
+        )}
         {getRandomItems(activities, selectedLocation).map((activity, index) => (
           <Link key={activity._id} to={`/activity-list/${activity._id}`}>
-            <div>
-              <img
-                src={activity.thumbnail}
-                alt={activity.title}
-                style={{ width: "10%", height: "auto" }}
-              />
+            <div className="services">
+              <img src={activity.thumbnail} alt={activity.title} />
               <p>{activity.title}</p>
             </div>
           </Link>
