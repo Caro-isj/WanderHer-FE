@@ -42,44 +42,26 @@ Geo Location:
 - /activity/:activityId - one activity details
 - /review/:lodgingId - get reviews for a lodging
 - /review/:activityId - get reviews for an activity
-- 404
+- /* - 404 not found
 
-## Pages
+## Pages & Components
 
 - Home Page (public)
 - Sign in Page (public)
 - Log in Page (public)
+- User Profile (user only)
+- Edit Profile (user only)
 - Dashboard (user only)
 - Lodging List (user only)
-- Restaurant Detail Page (public only)
-- My Profile Page (user only)
-- 404 Page (public)
-
-## Components
-
-- Restaurant Card component
-  - Input: restaurant: any
-  - Output: favorite(restaurantId: string, on: boolean)
-- Search component
-  - Output: change(terms: string)
-
-## IO
-
-
-## Services
-
-- Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
-  - auth.getUser() // synchronous
-- Restaurant Service
-  - restaurant.list()
-  - restaurant.create(data)
-  - restaurant.detail(id)
-  - restaurant.addFavorite(id)
-  - restaurant.removeFavorite(id)   
+- Lodging Details (user only)
+- Create Lodging (user only)
+- Edit Lodging (user only)
+- Activities List (user only)
+- Activity Details (user only)
+- Create Activity (user only)
+- Edit Activity (user only)
+- Girl Power Playlist (user only)
+- 404 Page (public) 
 
 # Server
 
@@ -91,17 +73,66 @@ User model
 username - String // required
 email - String // required & unique
 password - String // required
-favorites - [ObjectID<Restaurant>]
+firstName - String
+lastName - String
+phoneNumber - Number
+profilePicture - String
+aboutMe - String
+location - String
+age - Number
+occupation - String
+languages - [String]
+lodgings : populate by 'Lodging'
+activities : populate by 'Activity'
 ```
 
-Restaurant model
+Lodging model
 
 ```
-owner - ObjectID<User> // required
-name - String // required
-phone - String
-address - String
+title - String // required
+description - String // required
+location - String // required
+type - String // required
+amenities - Array
+maxGuests - Number // required
+maxStay - Number // required
+images - Array
+host - populate by 'User'
+observations - String
+latitude - Number
+longitude - Number
+
 ```
+
+Activity model
+
+```
+title - String // required
+description - String // required
+location - String // required
+meetingPoint - String // required
+capacity - Number // required // min 1
+price - Number // required
+thumbnail - String
+images - Array
+host - populate by 'User'
+latitude - Number
+longitude - Number
+
+```
+
+Review model
+
+```
+user - populate by 'User'
+property - populate by 'Lodging'
+activity - populate by 'Activity'
+title - String
+comment - String
+rating - Number // enum 1 to 5
+
+```
+
 
 ## API Endpoints/Backend Routes
 
