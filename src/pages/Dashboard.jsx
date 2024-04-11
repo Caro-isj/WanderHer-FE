@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import BusinessOwned from "../components/BusinessOwned";
 import { Link } from "react-router-dom";
 import "../styles/DashboardStyles.css";
-// import logo from "../assets/logotest1.png";
+import logo from "../assets/logotest1.png";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -57,7 +57,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <div className="dash-intro">
-        <img src="src/assets/logotest1.png" />
+        <img src={logo} />
         <h6>
           Be part of our global fellowship of female travelers and find your
           next homestay.
