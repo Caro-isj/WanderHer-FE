@@ -56,3 +56,17 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+/*****************************Not found page******************************/
+.not-found-page h1 {
+  font-family: CenturyG;
+}
+
+.bg-notfound {
+  /* background-image: url(https://images3.alphacoders.com/855/85585.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 5%;
+  width: 100%;
+  height: 100%;
+}
