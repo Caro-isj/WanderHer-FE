@@ -118,7 +118,7 @@ function LodgingDetails() {
         <h2>{lodgingDetails.description}</h2>
         <p>{lodgingDetails.type}</p>
         <p>Max Guests: {lodgingDetails.maxGuests}</p>
-        <p>Max Stay: {lodgingDetails.maxStay}</p>
+        <p>Max Stay: {lodgingDetails.maxStay} days</p>
         <p>{lodgingDetails.amenities.join(", ")}</p>
         {lodgingDetails.observations && (
           <p>Observations: {lodgingDetails.observations}</p>
@@ -153,7 +153,7 @@ function LodgingDetails() {
         {showAddReview && (
           <form onSubmit={addReview}>
             <label>
-              Title :
+              Title:
               <input
                 type="text"
                 value={title}
@@ -165,7 +165,7 @@ function LodgingDetails() {
             <label>
               Review :
               <input
-                type="text"
+                type="textarea"
                 value={comment}
                 onChange={(e) => {
                   setComment(e.target.value);
@@ -173,7 +173,7 @@ function LodgingDetails() {
               />
             </label>
             <label>
-              Rating :
+              Rating:
               <input
                 type="number"
                 min="1"

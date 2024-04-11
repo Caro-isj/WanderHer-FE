@@ -106,6 +106,7 @@ function CreateLodging() {
         <input
           type="text"
           name="location"
+          placeholder="City, Country"
           value={lodgingData.location}
           onChange={handleChange}
           required
