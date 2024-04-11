@@ -204,6 +204,13 @@ rating - Number // enum 1 to 5
 
 ## Links
 
+### The team
+
+[Link to Carolina's GitHub](https://github.com/Caro-isj)<br>
+[Link to Mariana's GitHub](https://github.com/marianaGOD)<br>
+[Link to Alexandra's GitHub](https://github.com/MimiBsn)<br>
+
+
 ### Trello/Kanban
 
 [Link to our trello board](https://trello.com/b/5jPx8eJS/project-03-baby)
@@ -219,6 +226,6 @@ The url to your repository and to your deployed project
 
 ### Slides
 
-The url to your presentation slides
+The url to our presentation slides
 
 [Slides Link](https://docs.google.com/presentation/d/1TZ-hi1PLOdVmn-IpbqPFcOJMvPM1qp8vCVld5v6lx3E/edit#slide=id.p)
