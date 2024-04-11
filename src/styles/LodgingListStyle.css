@@ -51,7 +51,7 @@ select {
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  width: 100%;
+  width: 50%;
 }
 
 input[type="text"],
