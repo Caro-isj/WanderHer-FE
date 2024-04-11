@@ -128,6 +128,7 @@ export default function ActivitiesDetails() {
       .post(`${API_URL}/review/`, review)
       .then((response) => {
         console.log(response);
+        nav(0)
       })
       .catch((error) => console.error("Error posting reviews:", error));
   }
