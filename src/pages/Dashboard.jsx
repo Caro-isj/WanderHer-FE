@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BusinessOwned from "../components/BusinessOwned";
 import { Link } from "react-router-dom";
 import "../styles/DashboardStyles.css";
+import logo from "../assets/logotest1.png";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -79,7 +80,7 @@ export default function Dashboard() {
         {getRandomItems(lodgings, selectedLocation).map((lodging, index) => (
           <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
             <div className="services">
-              <img src={lodging.images} alt={lodging.title} />
+              <Image src={logo} alt={lodging.title} />
               <p>{lodging.title}</p>
             </div>
           </Link>
