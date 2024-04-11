@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+import "../styles/CreateLodgingStyle.css";
 
 function EditLodging() {
   const [lodgingData, setLodgingData] = useState({
@@ -18,6 +19,7 @@ function EditLodging() {
     longitude: null,
   });
   const { lodgingId } = useParams();
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (lodgingId) {
@@ -233,7 +235,7 @@ function EditLodging() {
         Profile Image:
         <input type="file" name="images" />
       </label>
-      <button type="submit">Finish Edit</button>
+      <button type="submit">Save</button>
     </form>
   );
 }

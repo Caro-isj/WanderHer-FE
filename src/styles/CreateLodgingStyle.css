@@ -1,0 +1,79 @@
+
+
+form {
+  max-width: 600px;
+  background-color: #ffffff; /* White */
+  padding: 20px;
+  margin: 40px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(97, 55, 86, 0.2); /* Dark Purple shadow for depth */
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #613756; /* Dark Purple */
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 2px solid #b788ae; /* Lavender */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  border: 2px solid #f7a6a6; /* Soft Pink */
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+legend {
+  color: #613756; /* Dark Purple */
+  padding: 0 10px;
+  background-color: #f0f0f0; /* Light grey background */
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+button {
+  background-color: #9ef2c5; /* Mint Green */
+  color: #ffffff; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #effc49; /* Neon Yellow for hover effect */
+}
+
+a {
+  text-decoration: none;
+  color: #007bff; /* Keeping a consistent link color, feel free to change */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsiveness */
+@media (max-width: 640px) {
+  form {
+    margin: 20px;
+    padding: 10px;
+  }
+}
+

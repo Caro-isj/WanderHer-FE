@@ -84,7 +84,7 @@ input[type="checkbox"] {
 
 .lodging-item {
   flex: 0 0 auto;
-  width: 250px; 
+  width: 400px; 
   height: 350px; 
   border: 1px solid rgba(183, 136, 174, 255);
   border-radius: 10px;

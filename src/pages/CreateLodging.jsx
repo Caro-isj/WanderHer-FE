@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
 import { useParams, useNavigate } from "react-router-dom";
+import "../styles/CreateLodgingStyle.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -226,7 +227,7 @@ function CreateLodging() {
           rel="noopener noreferrer"
         >
           Discover your house's precise coordinates with ease! Simply click here
-          :round_pushpin:
+          📍
         </a>
         .
       </p>
