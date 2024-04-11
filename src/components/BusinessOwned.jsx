@@ -5,7 +5,7 @@ import business3 from "../assets/business3.jpg";
 
 export default function BusinessOwned() {
   const handleClick = (url) => {
-    window.location.href = url;
+    window.open(url, "_blank", "noopener");
   };
 
   return (

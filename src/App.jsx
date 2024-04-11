@@ -18,6 +18,8 @@ import ActivitiesDetails from "./pages/ActivitiesDetails";
 import ActivityForm from "./components/ActivityForm";
 import { EditActivity } from "./components/EditActivity";
 import GirlPowerPlaylist from "./pages/GirlPowerPlaylist";
+import AboutUs from "./pages/AboutUs";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (
@@ -98,7 +100,7 @@ function App() {
             </IsProtected>
           }
         />
-        <Route path="*" element={<h1> 404 Not found</h1>} />
+        <Route path="*" element={<NotFound />} />
         <Route
           path="/user/:userId/edit"
           element={
@@ -120,6 +122,14 @@ function App() {
           element={
             <IsProtected>
               <GirlPowerPlaylist />
+            </IsProtected>
+          }
+        />
+        <Route
+          path="about-us"
+          element={
+            <IsProtected>
+              <AboutUs />
             </IsProtected>
           }
         />

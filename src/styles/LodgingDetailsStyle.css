@@ -1,39 +1,96 @@
-.container {
-  padding: 20px;
+
+.lodging-details-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0;
+  background-color: transparent; 
 }
 
-.img-container img {
-  border: 5px solid rgba(183, 136, 174);
-}
+.lodging-details-title {
 
-.button {
-  background-color: rgba(158, 242, 197);
-  border: none;
-  padding: 10px 20px;
+  color: #613756; 
   text-align: center;
-  display: inline-block;
-  margin: 4px 2px;
+  margin: 0 auto 20px;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 10%;
+}
+
+.lodging-details-imgcontainer {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden; 
+  margin-bottom: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 60px; 
+  background-color: #ffffff85; 
+}
+
+.lodging-details-imgcontainer img {
+  max-width: 50%; 
+  height: auto; 
+  border-radius: 20px; 
+}
+
+.lodging-details-details {
+  
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden; 
+  margin-bottom: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 60px;
+  background-color: #ffffff85; 
+}
+
+
+button {
+  background-color: #9fd6ff; 
+  color: #ffffff; 
+  border: none;
+  padding: 10px 15px;
   cursor: pointer;
-  border-radius: 12px;
-  color: rgba(97, 55, 86);
+  border-radius: 4px; 
+  margin-right: 10px;
+  transition: background-color 0.3s;
 }
 
-.button:hover {
-  background-color: rgba(247, 166, 166);
+button:hover {
+  background-color: #f7a6a6; 
 }
 
-.highlight {
-  background-color: rgba(247, 166, 166);
-  padding: 5px;
-  border-radius: 5px;
+
+.lodging-details-addreviews form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ffffff85;;
 }
 
-.secondary-info {
-  color: rgba(239, 252, 73);
+
+.map-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  height: 300px;
 }
 
 .maps-embeded {
-  height: 40vh;
-  width: 80vh;
-  border-radius: 10px;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
 }
+.lodging-details-reviews{
+  justify-content: center; 
+  align-items: center; 
+  overflow: hidden; 
+  margin-bottom: 20px; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 60px; 
+  background-color: #ffffff85;
+}
+

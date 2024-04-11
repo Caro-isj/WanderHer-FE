@@ -78,6 +78,7 @@ export default function ActivitiesDetails() {
   };
 
   //show the update and delete buttons only if you're the host of the activity.
+  //show the book now button only if you're not the host of the activity.
   const update = () => {
     if (activity.host?._id === user?._id) {
       return (
@@ -90,13 +91,6 @@ export default function ActivitiesDetails() {
       );
     } else {
       console.log("Didn't work");
-      return null;
-    }
-  };
-
-  //show the book now button only if you're not the host of the activity.
-  const bookNow = () => {
-    if (!activity.host?._id === user._id) {
       return (
         <>
           <button>Book now</button>
@@ -105,11 +99,19 @@ export default function ActivitiesDetails() {
           </Link>
         </>
       );
-    } else {
-      // console.log("you're the host of this activity");
-      return null;
     }
   };
+
+  // const bookNow = () => {
+  //   if (!activity.host?._id === user._id) {
+  //     return (
+
+  //     );
+  //   } else {
+  //     // console.log("you're the host of this activity");
+  //     return null;
+  //   }
+  // };
 
   function showCreateReview() {
     setShowAddReview(!showAddReview);
@@ -128,6 +130,7 @@ export default function ActivitiesDetails() {
       .post(`${API_URL}/review/`, review)
       .then((response) => {
         console.log(response);
+        nav(0)
       })
       .catch((error) => console.error("Error posting reviews:", error));
   }
@@ -195,7 +198,7 @@ export default function ActivitiesDetails() {
           </div>
         </div>
         {update()}
-        {bookNow()}
+        {/* {bookNow()} */}
         <button onClick={showCreateReview}>Add Review</button>
         <div className="activity-form">
           {showAddReview && (

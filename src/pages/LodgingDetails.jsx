@@ -85,26 +85,45 @@ function LodgingDetails() {
       .post(`${API_URL}/review/`, review)
       .then((response) => {
         console.log(response);
+        navigate(0);
       })
       .catch((error) => console.error("Error posting reviews:", error));
   }
+
+  const getRating = (rating) => {
+    const fullStar = Math.round(rating);
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStar) {
+        stars.push("⭐");
+      } else {
+        stars.push("☆");
+      }
+    }
+    return stars.join("");
+  };
+  
   return (
-    <div>
-      <h1>{lodgingDetails.title}</h1>
-      <img
-        src={lodgingDetails.images}
-        alt={lodgingDetails.title}
-        style={{ width: "100%", height: "auto" }}
-      />
-      <p>{lodgingDetails.description}</p>
-      <p>Location: {lodgingDetails.location}</p>
-      <p>Type: {lodgingDetails.type}</p>
-      <p>Max Guests: {lodgingDetails.maxGuests}</p>
-      <p>Max Stay: {lodgingDetails.maxStay}</p>
-      <p>Amenities: {lodgingDetails.amenities.join(", ")}</p>
-      {lodgingDetails.observations && (
-        <p>Observations: {lodgingDetails.observations}</p>
-      )}
+    <div className="lodging-details-container">
+      <h1 className="lodging-details-title">{lodgingDetails.title}</h1>
+      <div className="lodging-details-imgcontainer">
+        <img
+          src={lodgingDetails.images}
+          alt={lodgingDetails.title}
+          style={{ width: "50%", height: "auto" }}
+        />
+      </div>
+      <div className="lodging-details-details">
+        <h1>{lodgingDetails.location}</h1>
+        <h2>{lodgingDetails.description}</h2>
+        <p>{lodgingDetails.type}</p>
+        <p>Max Guests: {lodgingDetails.maxGuests}</p>
+        <p>Max Stay: {lodgingDetails.maxStay}</p>
+        <p>{lodgingDetails.amenities.join(", ")}</p>
+        {lodgingDetails.observations && (
+          <p>Observations: {lodgingDetails.observations}</p>
+        )}
+      </div>
       <div className="map-container">
         {isLoaded && lodgingCoordinates && (
           <>
@@ -129,54 +148,58 @@ function LodgingDetails() {
           <button onClick={handleDelete}>Delete Lodging</button>
         </>
       )}
-
-      <button onClick={showCreateReview}>Add Review</button>
-      {showAddReview && (
-        <form onSubmit={addReview}>
-          <label>
-            Title :
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Review :
-            <input
-              type="text"
-              value={comment}
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Rating :
-            <input
-              type="text"
-              value={rating}
-              onChange={(e) => {
-                setRating(e.target.value);
-              }}
-            />
-          </label>
-          <button>Submit</button>
-        </form>
-      )}
+      <div className="lodging-details-addreviews">
+        <button onClick={showCreateReview}>Add Review</button>
+        {showAddReview && (
+          <form onSubmit={addReview}>
+            <label>
+              Title :
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+              />
+            </label>
+            <label>
+              Review :
+              <input
+                type="text"
+                value={comment}
+                onChange={(e) => {
+                  setComment(e.target.value);
+                }}
+              />
+            </label>
+            <label>
+              Rating :
+              <input
+                type="number"
+                min="1"
+                max="5"
+                value={rating}
+                placeholder="your rating out of 5"
+                onChange={(e) => {
+                  setRating(e.target.value);
+                }}
+              />
+            </label>
+            <button>Submit</button>
+          </form>
+        )}
+      </div>
       <Link to={`/user/${lodgingDetails.host}`}>
         <button>See Host!</button>
       </Link>
 
       <div>
         {reviews.map((rev) => (
-          <>
-            <h2>{rev.title}</h2>
+          <div key={rev._id} className="lodging-details-reviews">
             <p>{rev.comment}</p>
-            <p>{rev.rating}</p>
-          </>
+            <h2>{rev.title}</h2>
+            <p>{getRating(rev.rating)}</p>{" "}
+          </div>
         ))}
       </div>
     </div>

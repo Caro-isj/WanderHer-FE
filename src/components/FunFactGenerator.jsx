@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/FunFactGenerator.css";
 
 const funFacts = [
   "In 1960, Sirimavo Bandaranaike of Sri Lanka became the world's first female prime minister.",
@@ -32,8 +33,7 @@ export default function FunFactGenerator() {
   };
 
   return (
-    <div>
-      <h2>Women's Empowerment Fun Fact</h2>
+    <div className="funFactContainer">
       <p>{fact}</p>
       <button onClick={generateRandomFact}>Inspire Me</button>
     </div>
