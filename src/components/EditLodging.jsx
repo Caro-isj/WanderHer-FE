@@ -3,7 +3,6 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
-
 function EditLodging() {
   const [lodgingData, setLodgingData] = useState({
     title: "",
@@ -16,7 +15,7 @@ function EditLodging() {
     images: [],
     observations: "",
     latitude: null,
-    longitude: null
+    longitude: null,
   });
   const { lodgingId } = useParams(); // Assuming you're using React Router and have a route like "/edit-lodging/:lodgingId"
   const navigate = useNavigate();
@@ -54,8 +53,29 @@ function EditLodging() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const myFormData = new FormData();
+    const image = e.target.images.files[0];
+
+    // only send image to BE if a new image was added
+    if (image) {
+      myFormData.append(`images`, image);
+    }
+
+    // Append other lodging data
+    for (const key in lodgingData) {
+      if (key !== "images") {
+        if (key === "amenities") {
+          lodgingData[key].forEach((am) => {
+            // sintax to add an array to FormData5
+            myFormData.append("amenities[]", am);
+          });
+        } else {
+          myFormData.append(key, lodgingData[key]);
+        }
+      }
+    }
     axios
-      .put(`${API_URL}/lodging/${lodgingId}`, lodgingData)
+      .put(`${API_URL}/lodging/${lodgingId}`, myFormData)
       .then((response) => {
         console.log("Lodging updated:", response.data);
         navigate(`/lodging/${lodgingId}`); // Redirect to the lodging list or detail page after update
@@ -112,13 +132,44 @@ function EditLodging() {
       <fieldset>
         <legend>Amenities:</legend>
         {[
-          "wifi",
-          "private bathroom",
-          "garden",
-          "pet-friendly",
-          "air conditioner",
-          "kitchen",
-          "heating",
+          "Wi-Fi",
+          "Air Conditioning/Heating",
+          "Essentials ",
+          "Hot Water",
+          "Kitchen",
+          "Coffee Maker",
+          "Microwave",
+          "Refrigerator",
+          "Hangers",
+          "Hair Dryer",
+          "Iron",
+          "Extra Bedding",
+          "Smoke Detector",
+          "Carbon Monoxide Detector",
+          "First Aid Kit",
+          "Fire Extinguisher",
+          "TV",
+          "Washer/Dryer",
+          "Dishwasher",
+          "Private Entrance",
+          "Balcony/Terrace",
+          "BBQ Grill",
+          "Garden or Backyard",
+          "Outdoor Furniture",
+          "Crib",
+          "High Chair",
+          "Baby Safety Gates",
+          "Step-free access",
+          "Wide doorways",
+          "Accessible parking spot",
+          "Pool",
+          "Hot Tub",
+          "Gym",
+          "Private Parking",
+          "Clothing Storage",
+          "Mailbox Access",
+          "Pet-Friendly Amenities",
+          "Dedicated Workspace",
         ].map((amenity) => (
           <label key={amenity}>
             <input
@@ -178,6 +229,10 @@ function EditLodging() {
           value={lodgingData.observations}
           onChange={handleChange}
         />
+      </label>
+      <label>
+        Profile Image:
+        <input type="file" name="images" />
       </label>
       <button type="submit">Finish Edit</button>
     </form>

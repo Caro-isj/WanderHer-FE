@@ -54,12 +54,14 @@ function CreateLodging() {
     // Append other lodging data
     for (const key in lodgingData) {
       if (key !== "images") {
-        // Exclude images as it's handled separately
-        myFormData.append(key, lodgingData[key]);
+        if (key === "amenities") {
+          lodgingData[key].forEach((am) => {
+            myFormData.append("amenities[]", am);
+          });
+        } else {
+          myFormData.append(key, lodgingData[key]);
+        }
       }
-    }
-    for (let [key, value] of myFormData.entries()) {
-      console.log(key, value);
     }
 
     axios
