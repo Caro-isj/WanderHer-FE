@@ -94,7 +94,7 @@ export default function ActivitiesDetails() {
       return (
         <>
           <button>Book now</button>
-          <Link to={`/user/${activity.host}`}>
+          <Link to={`/user/${activity.host._id}`}>
             <button>See Host!</button>
           </Link>
         </>
