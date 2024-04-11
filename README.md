@@ -136,50 +136,89 @@ rating - Number // enum 1 to 5
 
 ## API Endpoints/Backend Routes
 
-- GET /auth/me
+- GET /auth/:userId
 - POST /auth/signup
   - body:
-    - username
+    - userName
     - email
     - password
 - POST /auth/login
   - body:
-    - username
+    - email
     - password
-- POST /auth/logout
-  - body: (empty)
-- POST /user/me/favorite
+   
+- PUT /user//:userId
   - body:
-    - restaurantId
-- DELETE /user/me/favorite/:restaurantId
-  - body: (empty)
-- GET /restaurant
-- POST /restaurant
-  - body:
-    - name
-    - phone
-    - address
-- GET /restaurant/:id
+    - username 
+    - email 
+    - firstName
+    - lastName 
+    - phoneNumber
+    - profilePicture
+    - aboutMe
+    - location
+    - age
+    - occupation 
+    - languages
 
+- POST /lodging
+  - body:
+    - title 
+    - description 
+    - location 
+    - type 
+    - amenities 
+    - maxGuests 
+    - maxStay 
+    - images
+    - observations 
+    - latitude 
+    - longitude 
+- DELETE /lodging/:lodgingId
+  - body: (empty)
+- GET /lodging
+- GET /lodging/:lodgingId
   
+- POST /activity
+  - body:
+    - title 
+    - description 
+    - location 
+    - meetingPoint 
+    - capacity 
+    - price 
+    - thumbnail
+    - images 
+    - latitude 
+    - longitude 
+- GET /activity
+- GET /activity/:activityId
+
+- GET /review/:lodgingId
+- GET /review/:activityId
+- POST /review
+  - body
+    - title 
+    - comment 
+    - rating 
 
 ## Links
 
 ### Trello/Kanban
 
-[Link to your trello board](https://trello.com) or picture of your physical board
+[Link to our trello board](https://trello.com/b/5jPx8eJS/project-03-baby)
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Client repository Link](http://github.com)
-[Server repository Link](http://github.com)
+[Client repository Link](https://github.com/Caro-isj/WanderHer-FE)
+[Server repository Link](https://github.com/Caro-isj/WanderHer-BE)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://wanderher.netlify.app)
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/1TZ-hi1PLOdVmn-IpbqPFcOJMvPM1qp8vCVld5v6lx3E/edit#slide=id.p)
