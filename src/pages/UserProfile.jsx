@@ -120,7 +120,7 @@ function UserProfile() {
                     to={`/activity-list/${activity._id}`}
                   >
                     <div className="srv-info">
-                      <img src={activity.images} alt="" />
+                      <img src={activity.thumbnail} alt="" />
                       <h4>{activity.title}</h4>
                     </div>
                   </Link>
