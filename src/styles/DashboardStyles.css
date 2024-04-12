@@ -9,7 +9,7 @@
 }
 
 .dash-intro {
-  padding-top: 60px;
+  padding-top: 100px;
   height: 350px;
   font-size: 2rem;
 }
@@ -28,7 +28,7 @@
   margin: 1em auto;
   position: relative;
   cursor: pointer;
-  padding-bottom: 150px;
+  padding-bottom: 170px;
 }
 
 .list-choice-title {
@@ -63,12 +63,11 @@
 
 .both-services {
   background-color: rgba(255, 255, 255, 0.832);
-  box-shadow: #d0bce5 1px 1px 40px 0px inset;
+  box-shadow: #d0bce5bb 1px 1px 40px 0px inset;
 }
 
 .services-container {
-  padding-top: 30px;
-  /* margin: 0 0 60px 0; */
+  padding-top: 60px;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-template-areas: "title title title title title" "img img img img img";
