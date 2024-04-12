@@ -1,16 +1,16 @@
-/* .dashboard {
-  background-image: url("../assets/background.png");
+.dashboard h3 {
+  font-family: Mountains;
+  padding-top: 0;
+  font-size: 50px;
 }
 
-.dashboard p {
-  padding: 0;
-  margin: 0;
-} */
+.dashboard h6 {
+  font-size: 18px;
+}
 
 .dash-intro {
-  padding-top: 90px;
-  height: 400px;
-  background-color: white;
+  padding-top: 60px;
+  height: 350px;
   font-size: 2rem;
 }
 
@@ -23,9 +23,52 @@
   width: 200px;
 }
 
+.list-choice {
+  width: 300px;
+  margin: 1em auto;
+  position: relative;
+  cursor: pointer;
+  padding-bottom: 150px;
+}
+
+.list-choice-title {
+  width: 100%;
+  display: block;
+  background: #d8d8d8;
+  text-align: center;
+  padding: 0.55em 1em;
+  box-sizing: border-box;
+  color: #fff;
+  text-shadow: 0 1px 0 #cacaca;
+  border-radius: 0.2em;
+}
+.list-choice:hover .list-choice-title {
+  border-radius: 0.2em 0.2em 0 0;
+}
+
+.list-choice-objects {
+  position: absolute;
+  top: 0;
+  padding-top: 2.1em;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 250ms ease;
+}
+
+.list-choice:hover .list-choice-objects {
+  max-height: 540px;
+}
+
+.both-services {
+  background-color: rgba(255, 255, 255, 0.832);
+  box-shadow: #d0bce5 1px 1px 40px 0px inset;
+}
+
 .services-container {
-  padding: 0;
-  margin: 0 0 60px 0;
+  padding-top: 30px;
+  /* margin: 0 0 60px 0; */
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-template-areas: "title title title title title" "img img img img img";
@@ -41,10 +84,8 @@
   width: 250px;
   height: 400px;
   border-radius: 1rem;
-  opacity: 0.8;
+  opacity: 0.9;
   max-height: 85%;
-  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 4px -1px,
-    rgba(0, 0, 0, 0.14) 0px 0px 5px 0px, rgba(0, 0, 0, 0.12) 0px 0px 10px 0px; */
 
   p {
     position: absolute;
@@ -53,7 +94,7 @@
     z-index: -1;
     opacity: 0;
     text-align: center;
-    color: #5e1a7e;
+    color: rgba(97, 55, 86, 255);
     font-size: 15px;
   }
 }
@@ -68,37 +109,27 @@
 
 .services-container h2 {
   grid-area: title;
+  font-family: Mountains;
+  font-size: 30px;
+  padding-bottom: 30px;
 }
 
 .services:hover {
   opacity: 1;
-  transform: translate(0, -10%);
+  transform: translate(0, -8%);
 }
 
 .services:hover p {
-  bottom: -8rem;
+  bottom: -5rem;
   opacity: 1;
 }
 
-.dash-intro {
-  padding-top: 90px;
-  height: 400px;
-  background-color: white;
-  font-size: 2rem;
-}
-
-.dash-intro > * {
-  margin: auto;
-  padding: 10px;
-}
-
-.dash-intro img {
-  width: 200px;
+.business-owned-ad h2 {
+  padding-top: 60px;
 }
 
 .business-container {
-  /* background-color: white; */
-  padding-top: 100px;
+  padding-top: 50px;
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-areas: "title title title" "img img img";
@@ -127,8 +158,6 @@
 }
 
 .business img {
-  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 4px -1px,
-    rgba(0, 0, 0, 0.14) 0px 0px 5px 0px, rgba(0, 0, 0, 0.12) 0px 0px 10px 0px; */
   border-radius: 1rem;
   object-fit: cover;
   height: 100%;

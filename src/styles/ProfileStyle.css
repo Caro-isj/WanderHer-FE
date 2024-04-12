@@ -1,0 +1,68 @@
+.profile-info-cont img {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-top: 50px;
+}
+
+.user-info {
+  background-color: rgba(255, 255, 255, 0.767);
+  border-radius: 30px 60px;
+  width: 70vw;
+  height: 30vw;
+  padding: 100px 25px 80px 25px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -80px;
+  line-height: normal;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+}
+
+.user-info p {
+  margin: 10px;
+  text-align: justify;
+}
+
+.service-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.service-wrap strong {
+  font-family: Mountains;
+  font-size: 30px;
+}
+
+.srv-info {
+  display: flex;
+  justify-content: start;
+  width: 800px;
+  max-height: 85%;
+  background: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 25px;
+  margin: 20px auto;
+  color: #613756;
+  height: 200px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+  text-align: left;
+}
+
+.srv-info img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.srv-info h4 {
+  font-size: 25px;
+  margin: auto 0;
+}

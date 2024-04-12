@@ -23,7 +23,7 @@ body {
 }
 
 .navigation-bar button {
-  background-color: #c3f0ca;
+  background-color: rgba(158, 242, 197);
   color: #5c5c5c;
   border: none;
   padding: 10px 20px;
@@ -34,7 +34,7 @@ body {
 }
 
 .navigation-bar button:hover {
-  background-color: #a4d4ae;
+  background-color: rgba(183, 136, 174, 255);
   transform: translateY(-2px);
 }
 

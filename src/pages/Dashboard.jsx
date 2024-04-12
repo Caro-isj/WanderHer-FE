@@ -58,47 +58,58 @@ export default function Dashboard() {
     <div className="dashboard">
       <div className="dash-intro">
         <img src={logo} />
+        <h3>WanderHer</h3>
         <h6>
           Be part of our global fellowship of female travelers and find your
           next homestay.
         </h6>
       </div>
-      <p>I'm feeling lucky in...</p>
-      <select onChange={handleLocationChange}>
-        <option value="">Select a location</option>
-        {locations.map((location, index) => (
-          <option key={index} value={location}>
-            {location}
+      <div className="list-choice">
+        <select onChange={handleLocationChange}>
+          <option className="list-choice-title" value="">
+            I'm feeling lucky in...
           </option>
-        ))}
-      </select>
-
-      <div className="services-container">
-        {getRandomItems(lodgings, selectedLocation).length > 0 && (
-          <h2>Random Lodgings</h2>
-        )}
-        {getRandomItems(lodgings, selectedLocation).map((lodging, index) => (
-          <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
-            <div className="services">
-              <img src={lodging.images} alt={lodging.title} />
-              <p>{lodging.title}</p>
-            </div>
-          </Link>
-        ))}
+          {locations.map((location, index) => (
+            <option
+              className="list-choice-objects"
+              key={index}
+              value={location}
+            >
+              {location}
+            </option>
+          ))}
+        </select>
       </div>
+      <div className="both-services">
+        <div className="services-container">
+          {getRandomItems(lodgings, selectedLocation).length > 0 && (
+            <h2>Our Lodgings</h2>
+          )}
+          {getRandomItems(lodgings, selectedLocation).map((lodging, index) => (
+            <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
+              <div className="services">
+                <img src={lodging.images} alt={lodging.title} />
+                <p>{lodging.title}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-      <div className="services-container">
-        {getRandomItems(activities, selectedLocation).length > 0 && (
-          <h2>Random Activities</h2>
-        )}
-        {getRandomItems(activities, selectedLocation).map((activity, index) => (
-          <Link key={activity._id} to={`/activity-list/${activity._id}`}>
-            <div className="services">
-              <img src={activity.thumbnail} alt={activity.title} />
-              <p>{activity.title}</p>
-            </div>
-          </Link>
-        ))}
+        <div className="services-container">
+          {getRandomItems(activities, selectedLocation).length > 0 && (
+            <h2>Our Activities</h2>
+          )}
+          {getRandomItems(activities, selectedLocation).map(
+            (activity, index) => (
+              <Link key={activity._id} to={`/activity-list/${activity._id}`}>
+                <div className="services">
+                  <img src={activity.thumbnail} alt={activity.title} />
+                  <p>{activity.title}</p>
+                </div>
+              </Link>
+            )
+          )}
+        </div>
       </div>
 
       <BusinessOwned />

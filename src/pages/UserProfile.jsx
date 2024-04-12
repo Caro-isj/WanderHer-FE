@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import placeholderImage from "../assets/profilepic.png";
 import { AuthContext } from "../contexts/AuthContext";
+import "../styles/ProfileStyle.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -35,30 +36,48 @@ function UserProfile() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
-      <div>
-        {user && (
-          <>
-            <img
-              src={user.profilePicture || placeholderImage}
-              alt="profilePicture"
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null;
-                currentTarget.src = placeholderImage;
-              }}
-            />
-            <h1> {user.userName}</h1>
-
+    <div className="profile-page">
+      {user && (
+        <>
+          <div className="profile-info-cont">
             <div>
+              <img
+                src={user.profilePicture || placeholderImage}
+                alt="profilePicture"
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null;
+                  currentTarget.src = placeholderImage;
+                }}
+              />
+            </div>
+            <div className="user-info">
+              <h1> {user.userName}</h1>
               <p>
-                {user.firstName} {user.lastName}
+                <strong>
+                  {user.firstName} {user.lastName}
+                </strong>{" "}
               </p>
               <p>
-                {user.age} {user.occupation}
+                <strong>Email:</strong> {user.email}
               </p>
-              <p>{user.location}</p>
-              <p>{user.aboutMe}</p>
               <p>
+                <strong>Phone:</strong> {user.phoneNumber}
+              </p>
+              <p>
+                <strong>City: </strong>
+                {user.location}
+              </p>
+              <p>
+                <strong>Age: </strong> {user.age}
+              </p>
+              <p>
+                {" "}
+                <strong>Occupation: </strong>
+                {user.occupation}
+              </p>
+              <p>
+                {" "}
+                <strong>Languages: </strong>
                 {user.languages.map((language, index) => {
                   if (index === user.languages.length - 1) {
                     return language + " ";
@@ -68,27 +87,29 @@ function UserProfile() {
                 })}
               </p>
               <p>
-                <strong>Email:</strong> {user.email}
+                <strong>About me: </strong>
+                {user.aboutMe}
               </p>
-              <p>
-                <strong>Phone:</strong> {user.phoneNumber}
-              </p>
-
-              <p>
+            </div>
+          </div>
+          <div>
+            <div className="service-wrap">
+              <h3>
                 {userLodgings.length > 0 && (
                   <strong>Lodgings by this user:</strong>
                 )}
                 {userLodgings.map((lodging) => (
                   <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
-                    <div>
-                      <p>{lodging.title}</p>
+                    <div className="srv-info">
                       <img src={lodging.images} alt="" />
+                      <h4>{lodging.title}</h4>
                     </div>
                   </Link>
                 ))}
-              </p>
-
-              <p>
+              </h3>
+            </div>
+            <div className="service-wrap">
+              <h3>
                 {user.activities.length > 0 && (
                   <strong>Activities by this user:</strong>
                 )}
@@ -98,25 +119,25 @@ function UserProfile() {
                     key={activity._id}
                     to={`/activity-list/${activity._id}`}
                   >
-                    <div>
-                      <p>{activity.title}</p>
+                    <div className="srv-info">
                       <img src={activity.images} alt="" />
+                      <h4>{activity.title}</h4>
                     </div>
                   </Link>
                 ))}
-              </p>
+              </h3>
             </div>
-            <div>
-              {/* compare user id of profile with user that's logged in */}
-              {loggedUser._id == userId && (
-                <Link to={`/user/${user._id}/edit`}>
-                  <button>Edit</button>
-                </Link>
-              )}
-            </div>
-          </>
-        )}
-      </div>
+          </div>
+          <div>
+            {/* compare user id of profile with user that's logged in */}
+            {loggedUser._id == userId && (
+              <Link to={`/user/${user._id}/edit`}>
+                <button>Edit</button>
+              </Link>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }
