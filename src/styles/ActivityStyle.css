@@ -1,4 +1,4 @@
-button {
+/* button {
   background-color: rgba(158, 242, 197);
   border: none;
   padding: 10px 20px;
@@ -8,7 +8,7 @@ button {
   cursor: pointer;
   border-radius: 12px;
   color: rgba(97, 55, 86);
-}
+} */
 /****************Activity LIST styles*****************/
 .activity-block {
   display: flex;

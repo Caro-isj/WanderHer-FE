@@ -10,6 +10,7 @@
 
 #root {
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   text-align: center;
 }
@@ -28,19 +29,16 @@ body {
   font-family: CenturyG;
   background-image: url("./assets/6543832.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed;
-  background-size: 100%;
-  padding-bottom: 60px;
-  position: relative;
-  min-height: 100vh;
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0 0 60px 0;
 }
 
 h1 {
   font-family: Mountains;
   font-size: 3.2em;
+  /* margin: 0; */
 }
 
 h2 {
@@ -49,14 +47,26 @@ h2 {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+  background-color: rgba(158, 242, 197);
+  color: #5c5c5c;
+  border: 1px solid transparent;
+  padding: 10px 15px;
   cursor: pointer;
-  transition: border-color 0.25s;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #f7a6a6;
+}
+
+button:focus,
+button:active {
+  outline: none;
+  box-shadow: 0 0 0 2px #f4bfbf;
 }
 
 /*****************************Not found page******************************/
@@ -71,4 +81,16 @@ button {
   margin-bottom: 5%;
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  /* .my-element {
+    display: block;
+  } */
+}
+
+@media only screen and (max-width: 1024px) {
+  /* .my-element {
+    display: block;
+  } */
 }

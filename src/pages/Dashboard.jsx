@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import BusinessOwned from "../components/BusinessOwned";
 import { Link } from "react-router-dom";
 import "../styles/DashboardStyles.css";
@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [activities, setActivities] = useState([]);
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
+  const servicesRef = useRef();
 
   useEffect(() => {
     axios
@@ -52,6 +53,9 @@ export default function Dashboard() {
 
   const handleLocationChange = (event) => {
     setSelectedLocation(event.target.value);
+    servicesRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -80,11 +84,14 @@ export default function Dashboard() {
           ))}
         </select>
       </div>
-      <div className="both-services">
-        <div className="services-container">
-          {getRandomItems(lodgings, selectedLocation).length > 0 && (
+
+      <div ref={servicesRef} className="both-services">
+        {getRandomItems(lodgings, selectedLocation).length > 0 && (
+          <div>
             <h2>Our Lodgings</h2>
-          )}
+          </div>
+        )}
+        <div className="services-container">
           {getRandomItems(lodgings, selectedLocation).map((lodging, index) => (
             <Link key={lodging._id} to={`/lodging/${lodging._id}`}>
               <div className="services">
@@ -95,10 +102,12 @@ export default function Dashboard() {
           ))}
         </div>
 
-        <div className="services-container">
-          {getRandomItems(activities, selectedLocation).length > 0 && (
+        {getRandomItems(activities, selectedLocation).length > 0 && (
+          <div>
             <h2>Our Activities</h2>
-          )}
+          </div>
+        )}
+        <div className="services-container">
           {getRandomItems(activities, selectedLocation).map(
             (activity, index) => (
               <Link key={activity._id} to={`/activity-list/${activity._id}`}>

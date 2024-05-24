@@ -15,18 +15,21 @@ export default function HomePage() {
   const handleLoginClick = () => {
     setView("login");
   };
+
   return (
     <div className="home-page">
-      <img src={logo} />
-      <h1>WanderHer</h1>
-      <h2>"Not all of those who wander are lost."</h2>
-      <div className="log-and-sign-container">
-        <Link to="/signup">
-          <button>SignUp</button>
-        </Link>
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+      <div className="home-page--wrapper">
+        <img src={logo} />
+        <h1>WanderHer</h1>
+        <h2>"Not all of those who wander are lost."</h2>
+        <div className="log-and-sign-container">
+          <Link to="/signup">
+            <button>SignUp</button>
+          </Link>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

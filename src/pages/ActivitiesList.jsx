@@ -29,7 +29,7 @@ export default function ActivitiesList() {
   return (
     <div className="activity-block">
       <div className="activity-list">
-        <h1>Activity List</h1>
+        <h1>Our Activities</h1>
         <Link to="/activity-form">
           <button>Add an activity</button>
         </Link>
