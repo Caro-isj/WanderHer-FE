@@ -36,7 +36,7 @@ const SectionTitle = styled.h2`
 const Image = styled.img`
   width: 250px;
   height: 250px;
-  margin: 20px;
+  margin: 8px;
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   object-fit: cover;
@@ -47,7 +47,6 @@ const Image = styled.img`
     transform: scale(1.05); /* Scales up the image slightly on hover */
   }
 `;
-
 
 const StyledLink = styled.a`
   text-decoration: none;
