@@ -36,7 +36,7 @@ function UserProfileEdit() {
         formData.append(userProperty, user[userProperty]);
       }
     }
-   
+
     formData.append("profilePicture", image);
 
     setLoading(true);
@@ -54,7 +54,7 @@ function UserProfileEdit() {
   };
 
   const handleDelete = () => {
-    if (confirm("Are you sure ?")) {
+    if (confirm("Are you sure you want to permanently delete your profile?")) {
       axios
         .delete(`${API_URL}/user/${userId}`)
         .then(() => {
@@ -316,8 +316,13 @@ function UserProfileEdit() {
         <button disabled={loading} type="submit">
           Save
         </button>
-        <button disabled={loading} type="button" onClick={() => handleDelete()}>
-          Delete
+        <button
+          disabled={loading}
+          type="button"
+          onClick={() => handleDelete()}
+          style={{ backgroundColor: "#f7a6a6" }}
+        >
+          Delete Profile
         </button>
       </form>
     </div>
